@@ -1,0 +1,66 @@
+.formCont {
+  animation: floshUp 1.8s ease-in;
+}
+
+.loginPage {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  margin-inline: auto;
+  align-items: center;
+  text-shadow: var(--mainFontColor) 1px 0 5px;
+}
+
+.imgLogo {
+  width: 600px;
+  height: 600px;
+  min-width: 300px;
+  min-height: 300px;
+  animation: floshUp 2.9s ease-in;
+}
+
+.title {
+  font-family: RmFont;
+  font-size: 250%;
+  letter-spacing: 6px;
+  animation: neonLogo 4.5s ease-in-out infinite alternate,
+    titleComming 1s ease-in;
+}
+.title:nth-child(2) {
+  margin-top: -2rem;
+}
+
+@keyframes titleComming {
+  from {
+    font-size: 15%;
+  }
+  to {
+    font-size: 300%;
+  }
+}
+@keyframes floshUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@font-face {
+  font-family: "RmFont";
+  src: url("../../assets/Fonts/get_schwifty.ttf") format("truetype");
+}
+
+@keyframes neonLogo {
+  from {
+    text-shadow: 0 0 0px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #48ff0091,
+      0 0 40px #48ff0091, 0 0 60px #48ff0091, 0 0 40px #48ff0091,
+      0 0 50px #48ff0091;
+  }
+  to {
+    text-shadow: 0 0 0px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #6efc365b,
+      0 0 35px #6efc365b, 0 0 40px #6efc365b, 0 0 50px #6efc365b,
+      0 0 75px #6efc365b;
+  }
+}

@@ -1,0 +1,17 @@
+.footer {
+    position: relative;
+    bottom: 0;
+    min-height: 2rem;
+    max-height: 2rem;
+    padding: .9rem 3rem;
+    background-color: rgba(255, 255, 255, .08);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     /* border-top: 2px solid #cccccc46; */
+    /* box-shadow: rgba(136, 165, 191, 0.9) 0 -2px 16px 0px,
+    rgba(255, 255, 255, 0) 0px 7px 3px 0px inset;  */
+    box-shadow: 0px 29px 39px 8px rgba(255, 255, 255, 1);
+}
+

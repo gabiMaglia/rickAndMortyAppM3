@@ -1,0 +1,32 @@
+.errorPage {
+    text-shadow: var(--mainFontColor) 1px 0 5px;
+  }
+  
+  .page_404 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .page_404__mainText {
+    text-align: center;
+    font-weight: 900;
+    font-size: 26px;
+  }
+  .page_404__zirkaAndry_img {
+    width: 10vw;
+    margin: 10px auto;
+
+  }
+  .page_404__text {
+    padding: 0 10px;
+    max-width: 650px;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    margin: 15px auto 25px;
+    margin-bottom: 5rem;
+  }
+  

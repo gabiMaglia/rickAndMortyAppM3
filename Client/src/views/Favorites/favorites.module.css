@@ -1,0 +1,65 @@
+.favoritesCont{
+  max-width: 100vw;
+  margin-bottom: 3rem ;
+  overflow-y: auto; 
+  max-height: calc(100vh - 4rem); 
+}
+
+.cardBoard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 3rem;
+  margin-right: 3rem;
+ 
+  overflow-y: hidden;
+  animation-duration: 5s;
+
+}
+
+.sorters {
+  margin-block: unset;
+  margin-top: 2rem;
+}
+
+
+
+
+
+
+/* The container must be positioned relative: */
+.customSelect {
+  position: relative;
+  font-family: Arial;
+  transform: scale(1.5);
+  padding-block: 3rem;
+  font-family: RmFont;
+  font-size: 36px;
+  
+}
+.customSelect i {
+  padding-right: 100px;
+  color: var(--softGreen);
+
+}
+.customSelect option,
+.customSelect select {
+ 
+  padding-inline: 2rem;
+  border: none !important;
+  outline: none!important;
+  background: none;
+  width: 8rem;
+  font-family: rmFont;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+.customSelect option {
+  background: black;
+  margin-bottom: 10px;
+
+}
+
