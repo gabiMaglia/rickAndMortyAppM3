@@ -1,22 +1,28 @@
-let http = require("node:http");
-const getCharById = require("./controllers/GetCharById");
-const trimId = require("./utils/trimIdFromUrl");
-// const data = require("./utils/data");
+const express = require('express');
+const server = express();
+// const router = require('./routes/index')
 const PORT = 3001;
 
-const server = http.createServer((req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  const { url } = req;
-
-  if (url.includes("/rickandmorty/character")) {
-    const id = trimId.trimId(url);
-    getCharById.getCharById(res, id);
-    return;
-  }
-
-  res.writeHead(404, { "Content-type": "text/plain" });
-  return res.end("Chracter not found");
+server.use(express.json());
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header(
+     'Access-Control-Allow-Headers',
+     'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  res.header(
+     'Access-Control-Allow-Methods',
+     'GET, POST, OPTIONS, PUT, DELETE'
+  );
+  next();
 });
-server.listen(PORT, "localhost");
 
-module.exports = server;
+
+
+server.listen(PORT, () => {
+  console.log('Server raised at port ' + PORT)
+})
+
+module.exports = server
+
