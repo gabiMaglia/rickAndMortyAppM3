@@ -1,5 +1,7 @@
 const userList = require("../utils/users");
-const loginController = (req, res) => {
+
+
+const login = (req, res) => {
   const { email, password } = req.query;
 
   if (email === userList.email && password === userList.password)
@@ -8,5 +10,5 @@ const loginController = (req, res) => {
 };
 
 module.exports = {
-    loginController
+    login
 }
