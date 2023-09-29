@@ -1,5 +1,6 @@
 //////////////////////////////////////////////////////////////
-// DEPENDENVYS AND HOOKS
+// DEPs AND HOOKS
+import { loginService } from "./services/apiCall";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useLocalStorage } from "./hooks/useLocalStorage";
@@ -27,9 +28,6 @@ function App() {
   const navigate = useNavigate();
   // Log in data
   const [access, setAccess] = useLocalStorage("acces", false);
-  const USERNAME = "gab.maglia@gmail.com";
-  const PASSWORD = "root1234";
-
   const maxCharacters = 826;
 
   const login = (userData) => {
@@ -40,12 +38,16 @@ function App() {
      * @param {string} userCredentials.password - La contraseña para iniciar sesión.
      */
 
-    if (userData.password === PASSWORD && userData.username === USERNAME) {
-      setAccess(true);
-      navigate("/home");
-    } else {
-      alert("Email or password invalid");
-    }
+    const { username, password } = userData;
+
+    loginService(username, password).then((data) => {
+      if (data.access) {
+        setAccess(true);
+        navigate("/home");
+      } else {
+        alert("Email or password invalid");
+      }
+    });
   };
   const logout = () => {
     /**

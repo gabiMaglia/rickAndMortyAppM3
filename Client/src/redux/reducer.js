@@ -22,7 +22,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         myFavorites: [...state.myFavorites, payload],
-        allCharacters: [...state.myFavorites, payload],
       };
     case REMOVE_FAVORITE:
       return {

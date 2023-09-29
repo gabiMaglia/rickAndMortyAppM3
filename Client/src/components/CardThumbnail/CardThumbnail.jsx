@@ -28,7 +28,6 @@ const CardThumbnail = (props) => {
   const [isFav, setIsfav] = useState(false);
 
   const handleFavBtn = () => {
-    console.log(isFav)
     isFav ? removeFromFav(id) : addToFav(props);
     setIsfav(!isFav);
   };

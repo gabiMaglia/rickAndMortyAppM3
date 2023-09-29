@@ -1,15 +1,14 @@
-const Router = express.Router
-const router = new Router();
+const express = require("express");
+const router = express.Router();
 
+const getCharByIdController = require("../controllers/GetCharById");
+const handleFavoritesController = require("../controllers/handleFavorites");
+const loginController = require("../controllers/login");
 
-const getCharByIdController = require('../controllers/GetCharById')
-const handleFavoritesController = require('../controllers/handleFavorites')
-const loginController = require('../controllers/login')
-
-router.get("/character/:id", getCharByIdController.getCharById);
-router.get("/login", loginController.login);
-router.post("/fav", handleFavoritesController.postFav);
-router.delete("/fav/:id", handleFavoritesController.deleteFav);
-
-
-module.exports = router
+router
+  .get("/character/:id", getCharByIdController.getCharByIdController)
+  .get("/login", loginController.loginController)
+  .post("/fav", handleFavoritesController.postFavController)
+  .delete("/fav/:id", handleFavoritesController.deleteFavController);
+  
+module.exports = router;

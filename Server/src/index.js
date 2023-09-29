@@ -1,8 +1,9 @@
 const express = require('express');
 const server = express();
-// const router = require('./routes/index')
+const router = require('./routes/index')
 const PORT = 3001;
 
+// MIDDLEWARES
 server.use(express.json());
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -17,8 +18,9 @@ server.use((req, res, next) => {
   );
   next();
 });
+// ENDMIDDLEWARES
 
-
+server.use('/rickandmorty', router) 
 
 server.listen(PORT, () => {
   console.log('Server raised at port ' + PORT)

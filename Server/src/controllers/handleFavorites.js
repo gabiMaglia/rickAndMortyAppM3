@@ -1,19 +1,18 @@
-let myFavorites = []
+let myFavorites = [];
 
- const postFav = (req, res) => {
-   const newChracter = req.body;
-   myFavorites.push(newChracter);
-   res.json(myFavorites)
-
-}
- const deleteFav = (req, res) => {
-    const {id} = req.param;
-    myFavorites = myFavorites.filter(e => e.id !== id)
-    res.json(myFavorites)
-}
-
+const postFavController = (req, res) => {
+  const newChracter = req.body;
+  myFavorites.push(newChracter);
+  res.json(myFavorites);
+};
+const deleteFavController = (req, res) => {
+  const { id } = req.param;
+  myFavoritesUpdated = myFavorites.filter((e) => e.id !== id);
+  myFavorites = myFavoritesUpdated;
+  res.json(myFavoritesUpdated);
+};
 
 module.exports = {
-    postFav,
-    deleteFav
-}
+  postFavController,
+  deleteFavController,
+};
