@@ -12,19 +12,31 @@ const makeCharacterDetail = (data) => {
   };
 };
 
-const getCharByIdController = (req, res) => {
+const getCharByIdController = async (req, res) => {
   const id = req.params.id;
 
-  axios
-    .get(`https://rickandmortyapi.com/api/character/${id}`)
-    .then(({ data }) => {
-      if (data.error) res.status(404).send("Not Found");
-      const dataObj = makeCharacterDetail(data);
-      return res.json(dataObj);
-    })
-    .catch((err) => {
-      res.status(500).send(err.message);
-    });
+  // axios
+  //   .get(`https://rickandmortyapi.com/api/character/${id}`)
+  //   .then(({ data }) => {
+  // 
+  //     if (data.error) res.status(404).send("Not Found");
+  //     const dataObj = makeCharacterDetail(data);
+  //     return res.json(dataObj);
+  //   })
+  //   .catch((err) => {
+  //     res.status(500).send(err.message);
+  //   });
+
+  try {
+    const response = await axios.get(
+      `https://rickandmortyapi.com/api/character/${id}`
+    );
+    if (response.error) res.status(404).send("Not Found");
+    const dataObj = makeCharacterDetail(response.data);
+    return res.status(200).json(dataObj);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 };
 
 module.exports = {

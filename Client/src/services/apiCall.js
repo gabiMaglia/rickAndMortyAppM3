@@ -7,7 +7,7 @@ export const fetchCharacterById = async (id) => {
    * @returns {Promise}
    */
   try {
-    // const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+ 
     const response = await fetch(
       `http://localhost:3001/rickandmorty/character/${id}`
     );
@@ -25,7 +25,7 @@ export const fetchAllData = async () => {
    * @returns {Promise}
    */
   try {
-    // const response = await fetch(`https://rickandmortyapi.com/api/character`);
+
     const response = await fetch(
       `http://localhost:3001/rickandmorty/character`
     );
@@ -53,7 +53,7 @@ export const loginService = async (email, password) => {
 
 export const postFavService = async (data) => {
   try {
-    axios.post("http://localhost:3001/rickandmorty/fav", data);
+   await axios.post("http://localhost:3001/rickandmorty/fav", data);
   } catch (error) {
     console.log(error);
     throw error;
@@ -62,7 +62,7 @@ export const postFavService = async (data) => {
 
 export const removeFavService = async (id) => {
   try {
-    axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
+   await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
   } catch (error) {
     console.log(error);
     throw error;
