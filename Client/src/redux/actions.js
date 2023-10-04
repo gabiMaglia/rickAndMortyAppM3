@@ -4,7 +4,7 @@ export const CLEAR_FAVORITE = "clearFav";
 export const FILTER = "filterFav";
 export const ORDER = "orderFav";
 import axios from 'axios'
-import { postFavService, removeFavService } from '../services/apiCall'
+// import { postFavService, removeFavService } from '../services/apiCall'
 
 
 const addFav = (character) => {
