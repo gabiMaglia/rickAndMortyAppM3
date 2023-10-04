@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export const fetchCharacterById = async (id) => {
   /**
    * This function fetch a chracter by id
@@ -7,9 +8,8 @@ export const fetchCharacterById = async (id) => {
    * @returns {Promise}
    */
   try {
- 
     const response = await fetch(
-      `http://localhost:3001/rickandmorty/character/${id}`
+      `${import.meta.env.VITE_API_ADDRES}/character/${id}`
     );
     const data = response.json();
     return data;
@@ -25,9 +25,8 @@ export const fetchAllData = async () => {
    * @returns {Promise}
    */
   try {
-
     const response = await fetch(
-      `http://localhost:3001/rickandmorty/character`
+      `${import.meta.env.VITE_API_ADDRES}/character`
     );
     const data = response.json();
     return data;
@@ -40,8 +39,9 @@ export const fetchAllData = async () => {
 export const loginService = async (email, password) => {
   try {
     const response = await fetch(
-      "http://localhost:3001/rickandmorty/login" +
-        `?email=${email}&password=${password}`
+      `${
+        import.meta.env.VITE_API_ADDRES
+      }/login/?email=${email}&password=${password}`
     );
     const data = response.json();
     return data;
@@ -51,20 +51,17 @@ export const loginService = async (email, password) => {
   }
 };
 
-export const postFavService = async (data) => {
-  try {
-   await axios.post("http://localhost:3001/rickandmorty/fav", data);
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
+export const postFavService =  (data) => {
+
+ 
+ 
 };
 
 export const removeFavService = async (id) => {
   try {
-   await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
+    await axios.delete(`${import.meta.env.VITE_API_ADDRES}/fav/${id}`);
   } catch (error) {
     console.log(error);
-    throw error;
+    throw Error(error);
   }
 };

@@ -103,7 +103,6 @@ function App() {
             path={ROUTES.LOGIN}
             element={<Login loginFunction={login} />}
           />
-
           <Route element={<ProtectedRoutes access={access} />}>
             <Route
               path={ROUTES.HOME}

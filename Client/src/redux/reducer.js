@@ -19,18 +19,22 @@ const rootReducer = (state = initialState, { type, payload }) => {
 
   switch (type) {
     case ADD_FAVORITE:
-      return {
-        ...state,
-        myFavorites: [...state.myFavorites, payload],
-        allCharacters: [...state.allCharacters, payload],
-      };
+      // return {
+      //   ...state,
+      //   myFavorites: [...state.myFavorites, payload],
+      //   allCharacters: [...state.allCharacters, payload],
+      // };
+
+      return { ...state, myFavorites: payload, allCharacters: payload };
     case REMOVE_FAVORITE:
-      return {
-        ...state,
-        myFavorites: state.myFavorites.filter(
-          (char) => char.id != payload
-        ),
-      };
+      // return {
+      //   ...state,
+      //   myFavorites: state.myFavorites.filter(
+      //     (char) => char.id != payload
+      //   ),
+      // };
+
+      return { ...state, myFavorites: payload, allCharacters: payload };
     case CLEAR_FAVORITE:
       return {
         ...state,
