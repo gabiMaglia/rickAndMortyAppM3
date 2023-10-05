@@ -10,14 +10,17 @@ const deleteFavController = (req, res) => {
   const favsFiltered = myFavorites.filter((char) => {
     return char.id !== Number(id); 
   });
-
   myFavorites = favsFiltered;
-  console.log(myFavorites)
   return res.json(myFavorites);
 };
 
+const clearFavController = (req, res) => {
+  myFavorites = []
+  return res.json(myFavorites);
+}
 
 module.exports = {
   postFavController,
   deleteFavController,
+  clearFavController
 };

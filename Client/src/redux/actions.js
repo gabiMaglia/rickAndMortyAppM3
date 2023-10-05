@@ -3,46 +3,51 @@ export const REMOVE_FAVORITE = "removeFav";
 export const CLEAR_FAVORITE = "clearFav";
 export const FILTER = "filterFav";
 export const ORDER = "orderFav";
-import axios from 'axios'
-// import { postFavService, removeFavService } from '../services/apiCall'
 
+
+import {
+  postFavService,
+  removeFavService,
+  clearFavService,
+} from "../services/apiCall";
 
 const addFav = (character) => {
   return (dispatch) => {
-    axios.post(`${import.meta.env.VITE_API_ADDRES}/fav`, character).then(({ data }) => {
+    postFavService(character).then((data) => {
       return dispatch({
-         type: ADD_FAVORITE,
-         payload: data,
+        type: ADD_FAVORITE,
+        payload: data,
       });
     });
   };
-  // postFavService(character)
-  // return { type: ADD_FAVORITE, payload: character };
 };
 
 const removeFav = (id) => {
   return (dispatch) => {
-    axios.delete(`${import.meta.env.VITE_API_ADDRES}/fav/${id}`).then(({ data }) => {
-       return dispatch({
-          type: REMOVE_FAVORITE,
-          payload: data,
+    removeFavService(id).then((data) => {
+      return dispatch({
+        type: REMOVE_FAVORITE,
+        payload: data,
+      });
     });
-    });
- };
-
-  // removeFavService(id)
-  // return { type: REMOVE_FAVORITE, payload: Number(id) };
+  };
 };
 const clearFav = () => {
-  return { type: CLEAR_FAVORITE };
+  return (dispatch) => {
+    clearFavService().then((data) => {
+      return dispatch({
+        type: CLEAR_FAVORITE,
+        payload: data,
+      });
+    });
+  };
 };
 
 const filterCards = (gender) => {
-  return {type: FILTER, payload: gender}
-}
+  return { type: FILTER, payload: gender };
+};
 const orderCards = (order) => {
-  return {type: ORDER, payload: order}
-
-}
+  return { type: ORDER, payload: order };
+};
 
 export { addFav, removeFav, clearFav, filterCards, orderCards };

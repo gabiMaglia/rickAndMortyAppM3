@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const fetchCharacterById = async (id) => {
   /**
    * This function fetch a chracter by id
@@ -51,15 +50,37 @@ export const loginService = async (email, password) => {
   }
 };
 
-export const postFavService =  (data) => {
-
- 
- 
+export const postFavService = async (character) => {
+  try {
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_ADDRES}/fav`,
+      character
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw Error(error);
+  }
 };
 
 export const removeFavService = async (id) => {
   try {
-    await axios.delete(`${import.meta.env.VITE_API_ADDRES}/fav/${id}`);
+    const response = await axios.delete(
+      `${import.meta.env.VITE_API_ADDRES}/fav/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw Error(error);
+  }
+};
+export const clearFavService = async () => {
+  try {
+   
+    const response = await axios.put(
+      `${import.meta.env.VITE_API_ADDRES}/fav/d-all`
+    );
+    return response.data;
   } catch (error) {
     console.log(error);
     throw Error(error);
