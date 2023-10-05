@@ -15,7 +15,7 @@ const deleteFavController = (req, res) => {
 };
 
 const clearFavController = (req, res) => {
-  myFavorites = []
+  myFavorites.splice(0, myFavorites.length);
   return res.json(myFavorites);
 }
 

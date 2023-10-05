@@ -10,6 +10,6 @@ router
   .get("/login", loginController.loginController)
   .post("/fav", handleFavoritesController.postFavController)
   .delete("/fav/:id", handleFavoritesController.deleteFavController)
-  .put("/fav/d-all", handleFavoritesController.clearFavController);
+  .delete("/fav", handleFavoritesController.clearFavController);
   
 module.exports = router;
