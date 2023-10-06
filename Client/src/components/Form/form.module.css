@@ -1,64 +1,42 @@
-
 .loginCard {
-  width: 600px;
-
-  min-width: 300px;
-
-  display: flex;
-
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
- 
-  border-radius: 12px;
+  padding-inline: 0.8rem;
+}
+.mainTitle {
+  display: none;
 }
 
-.titleCont {
-  text-align: center;
-
-  margin-bottom: 1.3rem;
+.subtitle {
+  width: 85%;
+  max-width: 640px;
+  padding-bottom: 1rem;
 }
-
-.title:nth-child(1) {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.title:nth-child(2) {
-  max-width: 450px;
-  margin-inline: auto;
-  overflow-wrap: break-word;
-  /* text-align: justify; */
-  font-size: 20px;
-  font-weight: 200;
-}
-
 .loginForm {
   display: flex;
-  gap: 1rem;
   flex-direction: column;
   align-items: center;
-  text-transform: uppercase;
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-shadow: var(--mainFontColor) 1px 0 5px;
+  gap: 0.3rem;
 }
 .loginForm input {
-  outline: none;
-  width: 20rem;
-  border-radius: 8px;
-  padding-inline: 1rem;
-  background: var(--mainFontColor);
-  color: var(--marine);
-  border: none;
-  border-bottom: 0.1px solid rgba(255, 255, 255, 0.192);
-  font-size: 18px;
-  font-weight: 800;
-margin-bottom: .3rem;
+  width: 13.7rem;
+  height: 1.3rem;
+  border-radius: 12px;
+  padding-inline: 0.3rem;
+  background-color: white;
+  color: black;
 }
-
-
+.loginForm label {
+  font-size: 17px;
+  padding: .4rem;
+}
+.errorChart {
+  position: relative;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  animation: neonError 4.5s ease-in-out infinite alternate;
+}
 .succes {
   border: 0.1px solid green !important;
 }
@@ -70,23 +48,39 @@ margin-bottom: .3rem;
   border-bottom: 0.1px solid rgba(255, 255, 255, 0.192);
 }
 
-.errorChart {
-  bottom: -70px;
-  position: absolute;
-  font-size: 16px;
-  animation: neonError 4.5s ease-in-out infinite alternate;
+.hide {
+  display: none;
+}
+.show {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  text-align: center;
 }
 
+@media screen and (min-width: 992px) {
+  .loginForm input {
+    width: 23.7rem;
+    height: 1.3rem;
+    border-radius: 12px;
+    padding-inline: 0.3rem;
+    background-color: white;
+    color: black;
+  }
+  .subtitle {
+    width: 95%;
+    font-size: large;
+    max-width: 640px;
+    padding-bottom: 1rem;
+  }
+  .mainTitle {
+    display: block;
+    padding: 3rem;
+    font-size: larger;
+  }
+}
 
 @keyframes neonError {
   from {
     text-shadow: 0 0 0px #fff, 0 0 10px #fff, 0 0 3px #fff, 0 0 4px #ff000091,
-      0 0 7px #ff000091, 0 0 8px #ff000091, 0 0 1px #ff000091,
-      0 0 1px #ff000091;
+      0 0 7px #ff000091, 0 0 8px #ff000091, 0 0 1px #ff000091, 0 0 1px #ff000091;
   }
   to {
     text-shadow: 0 0 0px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fc363677,

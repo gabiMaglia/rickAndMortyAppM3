@@ -7,6 +7,7 @@ import ROUTES from "../../helpers/routes.helper.js";
 import logo from "../../assets/logo/logo.png";
 import rickFace from "../../assets/png/devilRick.png"
 import styles from "./NavBar.module.css";
+// eslint-disable-next-line react/prop-types
 const NavBar = ({ logoutFunction }) => {
 
   /**
@@ -25,7 +26,6 @@ const NavBar = ({ logoutFunction }) => {
     <nav className={styles.navBar}>
       <span className={styles.brand} >
         <img src={logo} />
-      
         <img src={rickFace}  alt='Rick'></img>
       </span>
       {location.pathname !== '/' ?

@@ -93,7 +93,6 @@ describe("Test de RUTAS",  () => {
       await agent.post("/rickandmorty/fav").send(char1);
       await agent.post("/rickandmorty/fav").send(char2);
       const response = await agent.delete("/rickandmorty/fav")
-      
       expect(response.body.length).toBe(0)
     });
     

@@ -1,41 +1,76 @@
-.formCont {
-  animation: floshUp 1.8s ease-in;
-}
-
 .loginPage {
-  display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: nowrap;
-  margin-inline: auto;
-  align-items: center;
+  display: grid;
+  place-content: center;
+  
+  height: calc(100svh - 10.5rem) ;
   text-shadow: var(--mainFontColor) 1px 0 5px;
+  
 }
-
 .imgLogo {
-  width: 600px;
-  height: 600px;
-  min-width: 300px;
-  min-height: 300px;
+  margin-inline: auto;
+  width: 52%;
+  max-width: 270px;
   animation: floshUp 2.9s ease-in;
 }
 
 .title {
   font-family: RmFont;
-  font-size: 250%;
-  letter-spacing: 6px;
+  font-size: 140%;
+  letter-spacing: 3px;
   animation: neonLogo 4.5s ease-in-out infinite alternate,
+  titleComming 1s ease-in;
+}
+
+
+
+.formCont {
+  animation: floshUp 1.8s ease-in;
+  padding-block: 1rem;
+}
+
+
+
+
+
+
+@media screen and (min-width : 992px) {
+  .loginPage {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-inline: auto;  
+  align-items: center;
+  max-width: 1480px;
+  }
+
+  .imgLogo {
+    margin-inline: auto;
+    width: 52%;
+    max-width: none;
+    min-width: 370px;
+    animation: floshUp 2.9s ease-in;
+  }
+
+  .title {
+    font-family: RmFont;
+    font-size: 240%;
+    letter-spacing: 3px;
+    animation: neonLogo 4.5s ease-in-out infinite alternate,
     titleComming 1s ease-in;
+  }
 }
-.title:nth-child(2) {
-  margin-top: -2rem;
-}
+
+
+
+
+
+
 
 @keyframes titleComming {
   from {
     font-size: 15%;
   }
   to {
-    font-size: 300%;
+    font-size: 140%;
   }
 }
 @keyframes floshUp {

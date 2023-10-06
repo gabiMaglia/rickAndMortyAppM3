@@ -1,7 +1,7 @@
 {
-  "name": "server",
+  "name": "dexserver",
   "version": "1.0.0",
-  "description": "Rick and morty server",
+  "description": "Rick and morty server and M3 integration proyect",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/index.js",

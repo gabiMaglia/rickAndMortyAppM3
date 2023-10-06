@@ -1,4 +1,4 @@
-import React from "react";
+
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./footer.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ import { clearFav } from "../../redux/actions";
  * This function represents the Footer
  * @returns {React.JSX}
  */
+// eslint-disable-next-line react-refresh/only-export-components
 const Footer = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ const Footer = (props) => {
           clearBoard={props.clear}
         />
       ) : (
-        <p>Proyecto integrador Henry M2 / &copy; Gabriel Maglia 2023</p>
+        <p>Proyecto integrador Henry M2 / &copy; GMaglia</p>
       )}
     </footer>
   );
@@ -59,4 +60,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default connect(null, mapDispatchToProps)(Footer);

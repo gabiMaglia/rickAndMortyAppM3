@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
   border-bottom: 2px solid transparent;
   box-shadow: rgba(136, 165, 191, 0.9) 0 -2px 16px 0px,
   rgba(255, 255, 255, 0) 0px 7px 3px 0px inset; 
@@ -29,8 +30,10 @@
 
 .brand {
   display: flex;
-  width: 220px;
-  height: 5.5rem;
+  gap: 7%;
+  width: 250px;
+  height: 3.9rem;
+  min-height: 2rem;
 }
 
 

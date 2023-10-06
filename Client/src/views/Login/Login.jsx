@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import Form from "../../components/Form/Form";
 import mainLogo from "../../assets/png/actionPortal.png"
@@ -16,8 +17,7 @@ const Login = ({loginFunction}) => {
     
     <section className={styles.loginPage}>
       <img className={styles.imgLogo} src={mainLogo} alt="" />
-      <span>
-      </span>
+      
       <span className={styles.formCont}>
         <h1 className={styles.title}>Rick and Morty</h1>
         <p className={styles.title}>Dex</p>

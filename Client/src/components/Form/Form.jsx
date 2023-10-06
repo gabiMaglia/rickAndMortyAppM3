@@ -1,15 +1,21 @@
-import React, { useState } from "react";
-import NavBtn from "../common/NavBtn";
+import { useState, useEffect } from "react";
+
 import styles from "./form.module.css";
 import { validateUser } from "./validate.js";
 import GoBtn from "../common/GoBtn";
 
+// eslint-disable-next-line react/prop-types
 const Form = ({ loginFunction }) => {
   /**
    * This function represents the contact form
    *
    * @returns {React.JSX}
    */
+  const [errorFlag, setErrorFlag] = useState(false);
+
+  const errorFlagHandler = (errorWillBe) => {
+    setErrorFlag(errorWillBe);
+  };
 
   // userName & Pass state
   const [userData, setUserData] = useState({
@@ -22,17 +28,35 @@ const Form = ({ loginFunction }) => {
     password: "",
   });
 
+  
+  useEffect(() => {
+    if (errors.username !== 0 || errors.password !== 0) {
+      errorFlagHandler(true);
+    } else {
+      errorFlagHandler(false);
+    }
+  }, [errors]);
+
+
   const handleFormChange = (e) => {
     /**
      * This function handles reaction of typing code in the imputs
      * writes the states and check the errores
      *
      */
+
     const input = e.target.name;
     const value = e.target.value;
 
     setErrors(validateUser({ ...userData, [input]: value }));
     setUserData({ ...userData, [input]: value });
+ 
+    
+    if (errors.username !== 0 || errors.password !== 0) {
+      errorFlagHandler(true);
+    } else {
+      errorFlagHandler(false);
+    }
   };
 
   const handleFormSubmit = (e) => {
@@ -44,19 +68,19 @@ const Form = ({ loginFunction }) => {
     e.preventDefault();
     loginFunction(userData);
   };
-  
+
   return (
     <div className={styles.loginCard}>
-      <div className={styles.loginBackground}></div>
-      <span className={styles.titleCont}>
-        <strong className={styles.title}>Enter your credentials please.</strong>
-      <p className={styles.title}>You can keep calm nothing here will affect you directly or indirecly neither in this universe or others... </p>
-      </span>
+      <div>
+        <div className={styles.loginBackground}></div>
+        <span className={styles.titleCont}>
+          <strong className={styles.mainTitle}>Enter your credentials please.</strong>
+        </span>
+      </div>
       <form
         className={styles.loginForm}
         onSubmit={handleFormSubmit}
-        action=""
-        method="get"
+  
       >
         <label htmlFor="user">Username:</label>
         <input
@@ -87,8 +111,8 @@ const Form = ({ loginFunction }) => {
               : styles.none
           }
         />
-        <div >
-          <GoBtn  className="page_404__link" type="submit" content={"Go!"} />
+        <div>
+          <GoBtn className="page_404__link" type="submit" content={"Go!"} />
         </div>
         <span className={styles.errorChart}>
           <span className={styles.loginErrors}>
@@ -113,7 +137,10 @@ const Form = ({ loginFunction }) => {
             )}
           </span>
         </span>
-        
+        <p className={`  ${errorFlag ? styles.hide : styles.subtitle}`}>
+          You can keep calm nothing here will affect you directly or indirecly
+          neither in this universe or others...{" "}
+        </p>
       </form>
     </div>
   );

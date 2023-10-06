@@ -76,7 +76,6 @@ export const removeFavService = async (id) => {
 };
 export const clearFavService = async () => {
   try {
-   
     const response = await axios.delete(
       `${import.meta.env.VITE_API_ADDRES}/fav`
     );
