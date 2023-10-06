@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
 import styled from "styled-components";
 /**
  * This function represents the NavBar buttons
@@ -15,7 +16,7 @@ const SearchButton = styled.button`
   text-decoration: none;
   text-transform: uppercase;
   text-align: right;
-  font-size: 18px!important;
+ 
   font-weight: 400;
   letter-spacing: 1px;
   text-shadow: var(--mainFontColor) 1px 0 5px;

@@ -32,5 +32,6 @@ export const validateUser = (data) => {
       errors.password++
     }
   }
+
   return errors;
 };

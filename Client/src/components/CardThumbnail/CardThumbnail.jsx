@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./CardThumbnail.module.css";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addFav, removeFav } from "../../redux/actions";
-import InfoBox from "../Card/CardParts/InfoBox";
+
 /**
  * Represents a card.
  * @param {number} id -

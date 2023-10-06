@@ -1,10 +1,9 @@
 .loginPage {
   display: grid;
   place-content: center;
-  
-  height: calc(100svh - 10.5rem) ;
+
+  height: calc(100svh - 10.5rem);
   text-shadow: var(--mainFontColor) 1px 0 5px;
-  
 }
 .imgLogo {
   margin-inline: auto;
@@ -18,28 +17,21 @@
   font-size: 140%;
   letter-spacing: 3px;
   animation: neonLogo 4.5s ease-in-out infinite alternate,
-  titleComming 1s ease-in;
+    titleComming 1s ease-in;
 }
-
-
 
 .formCont {
   animation: floshUp 1.8s ease-in;
   padding-block: 1rem;
 }
 
-
-
-
-
-
-@media screen and (min-width : 992px) {
+@media screen and (min-width: 992px) {
   .loginPage {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  margin-inline: auto;  
-  align-items: center;
-  max-width: 1480px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-inline: auto;
+    align-items: center;
+    max-width: 1480px;
   }
 
   .imgLogo {
@@ -51,19 +43,14 @@
   }
 
   .title {
+    margin-bottom: -28px;
     font-family: RmFont;
     font-size: 240%;
     letter-spacing: 3px;
     animation: neonLogo 4.5s ease-in-out infinite alternate,
-    titleComming 1s ease-in;
+      titleComming 1s ease-in;
   }
 }
-
-
-
-
-
-
 
 @keyframes titleComming {
   from {

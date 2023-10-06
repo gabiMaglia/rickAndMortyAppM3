@@ -28,7 +28,7 @@ const Favorites = ({ myFavorites }) => {
    
 
         <div className={styles.customSelect}>
-          <i>Order by:</i>
+       
           <label htmlFor='Order'>Id: </label>
             <select onChange={handleOrder} name="Order" id="">
               <option value="A">Ascendente</option>

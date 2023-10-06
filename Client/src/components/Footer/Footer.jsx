@@ -1,4 +1,4 @@
-
+/* eslint-disable react/prop-types */
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./footer.module.css";
 import { useLocation, useNavigate } from "react-router-dom";

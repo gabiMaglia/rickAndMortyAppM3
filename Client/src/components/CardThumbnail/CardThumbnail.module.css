@@ -1,14 +1,11 @@
 .card {
   display: grid;
-  grid-template-rows: auto 1fr auto;
   text-decoration: none;
-  min-width: fit-content;
-  max-width: 120px;
   border: 2px solid var(--mainBorderColor);
   border-radius: 2px;
   background-color: white;
   background-image: url(https://i.pinimg.com/564x/9a/d8/ea/9ad8eaf34c647527ae396f562f77857a.jpg);
-  transform: scale(0.9);
+  transform: scale(0.8);
 }
 
 .header {
@@ -76,7 +73,7 @@
   border-top: 1px solid white;
   height: 2.5rem;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 1.9px;
   background-color: black;
 }
@@ -94,8 +91,16 @@
 
 
 .detail {
-  font-size: 16px;
+
   color: white;
   font-weight: 900;
   border-left: 1px solid white;
+}
+
+
+@media screen and (min-width: 992px) {
+  .card {
+  
+    transform: scale(0.9);
+  }
 }

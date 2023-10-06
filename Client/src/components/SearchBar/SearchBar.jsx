@@ -71,6 +71,7 @@ const SearchBarCont = styled.div`
   text-align: center;
   display: flex;
   gap: 2rem;
+  font-size: 14px;
   align-items: center;
 `;
 
@@ -80,13 +81,14 @@ const SearchInput = styled.input`
   text-decoration: none;
   text-transform: uppercase;
   text-align: right;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 2px;
   text-shadow: var(--mainFontColor) 1px 0 5px;
   border-bottom: solid 1px var(--mainBorderColor);
   border: none;
-  width: 420px;
+  width: 220%;
+  min-width: 80px;
   height: 3.3rem;
   background-color: rgba(0, 0, 0, 0.034);
   outline: none;
