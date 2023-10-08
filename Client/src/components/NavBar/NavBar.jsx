@@ -23,10 +23,10 @@ const NavBar = ({ logoutFunction }) => {
     logoutFunction();
   };
   const handleClick = () => {
-    console.log(windowWidth.current)
+  
     if (windowWidth.current < 767){
       setClicked(!clicked);
-    console.log(windowWidth.current)
+   
   }
   };
   
