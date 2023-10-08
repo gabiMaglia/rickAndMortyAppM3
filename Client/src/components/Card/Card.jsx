@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import styles from "./Card.module.css";
 import CardHeader from "./CardParts/CardHeader";
@@ -98,4 +99,5 @@ const mapStateToProps = (state) => {
   };
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default connect(mapStateToProps, mapDispatchToProps)(Card);

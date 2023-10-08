@@ -1,6 +1,6 @@
-import { React, useEffect } from "react";
+
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+
 
 /**
  * This function represents the Card Header
@@ -25,7 +25,7 @@ const HeaderDiv = styled.header`
   background-color: black;
   display: flex;
   min-height: 60px;
-  width: 320px;
+  /* width: 310px; */
   width: 100%;
   justify-content: space-between;
   animation: light 5s infinite;

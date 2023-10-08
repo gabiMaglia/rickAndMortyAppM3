@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import NavBtn from "../common/NavBtn.jsx";
@@ -7,6 +7,7 @@ import ROUTES from "../../helpers/routes.helper.js";
 import logo from "../../assets/logo/logo.png";
 import rickFace from "../../assets/png/devilRick.png";
 import styles from "./NavBar.module.css";
+
 // eslint-disable-next-line react/prop-types
 const NavBar = ({ logoutFunction }) => {
   /**
@@ -16,13 +17,19 @@ const NavBar = ({ logoutFunction }) => {
    */
   const [clicked, setClicked] = useState(false);
   const location = useLocation();
+  const windowWidth = useRef(window.innerWidth);
+
   const handleLogOut = () => {
     logoutFunction();
   };
   const handleClick = () => {
-    setClicked(!clicked);
+    console.log(windowWidth.current)
+    if (windowWidth.current < 767){
+      setClicked(!clicked);
+    console.log(windowWidth.current)
+  }
   };
-
+  
   return (
     <NavContainer className={styles.navBar}>
       <span className={styles.brand}>
@@ -108,7 +115,7 @@ const NavContainer = styled.nav`
   }
   .links {
     position: absolute;
-    top: -700px;
+    top: -100px;
     left: -2000px;
     right: 0;
     margin-left: auto;
@@ -137,7 +144,7 @@ const NavContainer = styled.nav`
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    top: 30%;
+    top: 280%;
     left: 0;
     right: 0;
     text-align: center;
@@ -155,7 +162,7 @@ const NavContainer = styled.nav`
 `;
 
 const BgDiv = styled.div`
-  background-color: #222;
+  background-color: #3a3838;
   position: absolute;
   top: -1000px;
   left: -1000px;
@@ -169,6 +176,7 @@ const BgDiv = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 1500%;
+    background-color: #000000;
   }
 `;

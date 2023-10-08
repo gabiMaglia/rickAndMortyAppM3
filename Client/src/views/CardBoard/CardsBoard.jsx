@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import style from "./CardBoard.module.css";
 import CardThumbnail from "../../components/CardThumbnail/CardThumbnail";
 
