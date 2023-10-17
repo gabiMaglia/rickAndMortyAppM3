@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
   // primero parametro de define el nombre del modelo,
   // segundo parametro un objeto con el modelo
   sequelize.define(
-    "Character",
+    "Favorites",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -37,10 +37,10 @@ module.exports = (sequelize) => {
         defaultValue: "Unknown",
         allowNull: false,
       },
-    }
+    },
     // podemos agregar un tercer objeto como parametro para evitar los timestamps entre otras cosas
-    // {
-    //     timestamps: false
-    // }
+    {
+        timestamps: false
+    }
   );
 };
