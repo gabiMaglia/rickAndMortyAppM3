@@ -3,6 +3,8 @@ const server = express();
 var cors = require('cors')
 const router = require('./routes/index')
 
+
+
 // MIDDLEWARES
 server.use(express.json());
 
