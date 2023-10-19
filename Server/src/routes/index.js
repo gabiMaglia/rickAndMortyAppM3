@@ -2,18 +2,19 @@ const express = require("express");
 const router = express.Router();
 
 const getCharByIdController = require("../controllers/GetCharById");
-const handleFavoritesController = require("../controllers/handleFavorites");
+const { postFavController, deleteFavController, clearFavController } = require("../controllers/handleFavorites");
 const loginController = require("../controllers/login");
-const episodesController = require("../controllers/handleEpisodes");
-
+const { findAllEpisodes, createEpisode } = require("../controllers/handleEpisodes");
+const postUser = require("../controllers/postUser");
 
 router
-  .get("/character/:id", getCharByIdController.getCharByIdController)
-  .get("/login", loginController.loginController)
-  .get("/episodes", episodesController.findAllEpisodes)
-  .post ("/episodes", episodesController.createEpisode)
-  .post("/fav", handleFavoritesController.postFavController)
-  .delete("/fav/:id", handleFavoritesController.deleteFavController)
-  .delete("/fav", handleFavoritesController.clearFavController);
+  .get("/character/:id", getCharByIdController)
+  .get("/login", loginController)
+  .post("/user", postUser)
+  .post("/episodes", createEpisode)
+  .get("/episodes", findAllEpisodes)
+  .post("/fav", postFavController)
+  .delete("/fav/:id", deleteFavController)
+  .delete("/fav", clearFavController);
 
 module.exports = router;

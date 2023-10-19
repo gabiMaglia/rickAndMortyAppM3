@@ -39,6 +39,4 @@ const getCharByIdController = async (req, res) => {
   }
 };
 
-module.exports = {
-  getCharByIdController,
-};
+module.exports = getCharByIdController

@@ -8,6 +8,4 @@ const loginController = (req, res) => {
     : res.status(200).json({ access: false })
 };
 
-module.exports = {
-  loginController,
-};
+module.exports = loginController
