@@ -29,7 +29,7 @@ function App() {
   // Log in data
   const [access, setAccess] = useLocalStorage("acces", false);
   const maxCharacters = 826;
-
+ 
   const login = (userData) => {
     /**
      * Login Function

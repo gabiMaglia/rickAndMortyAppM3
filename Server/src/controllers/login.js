@@ -1,16 +1,26 @@
-const userList = require("../utils/users");
+const { user } = require("../db");
 
-const loginController = (req, res) => {
+const loginController = async (req, res) => {
+
   try {
     const { email, password } = req.query;
+
     if (!email || email === "" || !password || password === "") {
       res.status(400).send("Faltan datos");
     }
-    userList.find((user) => email === user.email && password === user.password)
-      ? res.status(200).json({ access: true })
-      : res.status(200).json({ access: false });
+
+    const newAcces = await user.findOne({
+      where: { user_handle: email, user_password: password },
+    });
+
+    if (newAcces === null) {
+      console.log("Not found!");
+      res.status(200).json({ access: false });
+    } else {
+      res.status(200).json({ access: true });
+    }
   } catch (error) {
-    res.status(500).send(error.mensage);
+    res.status(500).send(error.message);
   }
 };
 

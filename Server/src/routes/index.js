@@ -5,14 +5,15 @@ const getCharByIdController = require("../controllers/GetCharById");
 const { postFavController, deleteFavController, clearFavController } = require("../controllers/handleFavorites");
 const loginController = require("../controllers/login");
 const { findAllEpisodes, createEpisode } = require("../controllers/handleEpisodes");
-const postUser = require("../controllers/postUser");
+const {postUser, getUsers }= require("../controllers/UserHandle");
 
 router
   .get("/character/:id", getCharByIdController)
-  .get("/login", loginController)
-  .post("/user", postUser)
-  .post("/episodes", createEpisode)
   .get("/episodes", findAllEpisodes)
+  .get("/getUsers", getUsers)
+  .post("/login/", loginController)
+  .post("/newUser", postUser)
+  .post("/episodes", createEpisode)
   .post("/fav", postFavController)
   .delete("/fav/:id", deleteFavController)
   .delete("/fav", clearFavController);

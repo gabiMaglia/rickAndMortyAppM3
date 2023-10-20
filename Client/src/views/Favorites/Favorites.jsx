@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import Card from "../../components/Card/Card";
 import { filterCards, orderCards } from "../../redux/actions";

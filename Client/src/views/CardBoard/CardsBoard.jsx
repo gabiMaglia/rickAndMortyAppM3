@@ -24,6 +24,7 @@ export default function Cards(props) {
                 key={key}
                 id={e.id}
                 name={e.name}
+                origin={e.origin}
                 status={e.status}
                 species={e.species}
                 gender={e.gender}

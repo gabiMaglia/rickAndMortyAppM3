@@ -4,13 +4,14 @@ module.exports = (sequelize) => {
   // primero parametro de define el nombre del modelo,
   // segundo parametro un objeto con el modelo
   sequelize.define(
-    "Favorites",
+    "favorites",
     {
       id: {
         type: DataTypes.INTEGER,
-        autoIncrement: true,
+        allowNull: false,
         primaryKey: true,
       },
+        
       name: {
         type: DataTypes.STRING,
         allowNull: false,

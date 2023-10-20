@@ -37,13 +37,12 @@ export const fetchAllData = async () => {
 
 export const loginService = async (email, password) => {
   try {
-    const response = await fetch(
+    const response = await axios.post(
       `${
         import.meta.env.VITE_API_ADDRES
-      }/login/?email=${email}&password=${password}`
+      }/login?email=${email}&password=${password}`
     );
-    const data = response.json();
-    return data;
+    return response.data;
   } catch (error) {
     console.log(error);
     throw error;
