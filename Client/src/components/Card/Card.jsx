@@ -34,7 +34,14 @@ function Card(props) {
   const [isFav, setIsfav] = useState(false);
 
   const handleFavBtn = () => {
-    isFav ? removeFromFav(id) : addToFav( props );
+    isFav ? removeFromFav(id) : addToFav( 
+      id,
+      name,
+      status,
+      species,
+      gender,
+      image, 
+      );
     setIsfav(!isFav);
   };
 

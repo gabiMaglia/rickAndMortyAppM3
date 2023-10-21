@@ -37,13 +37,31 @@ export const fetchAllData = async () => {
 
 export const loginService = async (email, password) => {
   try {
-    const response = await fetch(
+    const response = await axios.post(
       `${
         import.meta.env.VITE_API_ADDRES
-      }/login/?email=${email}&password=${password}`
+      }/login?email=${email}&password=${password}`
     );
-    const data = response.json();
-    return data;
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+export const singInService = async (first_name, last_name, user_email,  user_handle, user_password) => {
+  try {
+    const response = await axios.post(
+      `${
+        import.meta.env.VITE_API_ADDRES
+      }/newUser`, {
+        first_name, 
+        last_name, 
+        user_email,  
+        user_handle, 
+        user_password
+      }
+    );
+    return response.data;
   } catch (error) {
     console.log(error);
     throw error;

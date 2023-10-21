@@ -1,26 +1,58 @@
-let myFavorites = [];
+const { favorites } = require("../db");
 
-const postFavController = (req, res) => {
-  myFavorites.push(req.body);
-  return res.json(myFavorites);
+const postFavController = async (req, res) => {
+  try {
+    const { id, name, gender, species, origin, image, status } = req.body;
+    console.log(origin);
+    if (!req.body) {
+      return res.status(401).send("Faltan datos");
+    } else {
+      await favorites.create({
+        id,
+        name,
+        gender,
+        species,
+        origin,
+        image,
+        status,
+      });
+      const updatedList = await favorites.findAll();
+      return res.status(200).json(updatedList);
+    }
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 };
 
-const deleteFavController = (req, res) => {
-  const { id } = req.params;
-  const favsFiltered = myFavorites.filter((char) => {
-    return char.id !== Number(id); 
-  });
-  myFavorites = favsFiltered;
-  return res.json(myFavorites);
+const deleteFavController = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deleteCharacter = await favorites.findByPk(id);
+
+    if (deleteCharacter) deleteCharacter.destroy();
+
+    const updatedList = await favorites.findAll();
+    return res.status(200).json(updatedList);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 };
 
-const clearFavController = (req, res) => {
-  myFavorites.splice(0, myFavorites.length);
-  return res.json(myFavorites);
-}
+const clearFavController = async (req, res) => {
+  try {
+    await favorites.destroy({
+      where: {},
+    });
+    const updatedList = await favorites.findAll();
+    return res.status(200).json(updatedList);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
 
 module.exports = {
   postFavController,
   deleteFavController,
-  clearFavController
+  clearFavController,
 };

@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////
 // DEPs AND HOOKS
-import { loginService } from "./services/apiCall";
+import { loginService, singInService } from "./services/apiCall";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 // COMPONENTS
 import StarsBackground from "./components/StarBackground/StarsBackground.jsx";
@@ -29,7 +29,16 @@ function App() {
   // Log in data
   const [access, setAccess] = useLocalStorage("acces", false);
   const maxCharacters = 826;
+  const [loginOrRegister, setloginOrRegister] = useState('login')
 
+
+  const formHandler = (e) => {
+   const button = e.target.innerHTML
+   console.log(e.target.innerHTML)
+   if(button === 'Log in') setloginOrRegister('login')
+   if(button === 'Sing in') setloginOrRegister('singin')
+   console.log(loginOrRegister)
+  }
   const login = (userData) => {
     /**
      * Login Function
@@ -46,6 +55,25 @@ function App() {
         navigate("/home");
       } else {
         alert("Email or password invalid");
+      }
+    });
+  };
+
+  const register = (userData) => {
+    const { first_name, last_name, user_email, user_handle, user_password } =
+      userData;
+
+    singInService(
+      first_name,
+      last_name,
+      user_email,
+      user_handle,
+      user_password
+    ).then((data) => {
+      if (data) {
+        navigate("/login");
+      } else {
+        alert("Error try again");
       }
     });
   };
@@ -97,11 +125,11 @@ function App() {
       <StarsBackground />
 
       <main className="mainLayout">
-        <NavBar logoutFunction={logout} />
+        <NavBar logoutFunction={logout} formHandler = {formHandler} />
         <Routes>
           <Route
             path={ROUTES.LOGIN}
-            element={<Login loginFunction={login} />}
+            element={<Login registerFunction={register} loginFunction={login} loginOrRegister={loginOrRegister} />}
           />
           <Route element={<ProtectedRoutes access={access} />}>
             <Route
@@ -125,5 +153,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;

@@ -30,7 +30,6 @@ const Form = ({ registerFunction, loginFunction, loginOrRegister  }) => {
 
   
   useEffect(() => {
-  
     if (errors.username !== 0 || errors.password !== 0) {
       errorFlagHandler(true);
     } else {

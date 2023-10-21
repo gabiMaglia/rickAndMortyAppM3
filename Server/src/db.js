@@ -1,27 +1,32 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
-const  characterModel = require('./models/character')
-const  episodeModel = require('./models/Episode')
+const favoritesModel = require("./models/Favorites");
+const userModel = require("./models/User");
+const episodeModel = require("./models/Episode");
 const { DB_USER, DB_PASSWORD, DB_PORT, DB_HOST, BDD } = process.env;
-// const character = require('./models/character')
 
 // DB Conection
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${Number(DB_PORT)}/${BDD}`,
-  {logging: false}
+  { logging: false }
 );
 
-
 // Model implementation
-characterModel(sequelize)
-episodeModel(sequelize)
+favoritesModel(sequelize);
+userModel(sequelize);
+episodeModel(sequelize);
 
-const {Character, Episode} = sequelize.models;
+const { favorites, user, episodes } = sequelize.models;
 
-Character.belongsToMany(Episode, {through : 'CharacterEpisode'})
-Episode.belongsToMany( Character, {through : 'CharacterEpisode'} )
+favorites.belongsToMany(user, { through: "user_favorite" });
+user.belongsToMany(favorites, { through: "user_favorite" });
+
+favorites.belongsToMany(episodes, { through: "fav_episodes" });
+episodes.belongsToMany(favorites, { through: "fav_episodes" });
+
+
 
 module.exports = {
-    sequelize,
-    ...sequelize.models,
+  sequelize,
+  ...sequelize.models,
 };
