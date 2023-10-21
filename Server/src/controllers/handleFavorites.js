@@ -2,10 +2,10 @@ const { favorites } = require("../db");
 
 const postFavController = async (req, res) => {
   try {
-    const {id, name, gender, species, origin, image, status } = req.body;
+    const { id, name, gender, species, origin, image, status } = req.body;
     console.log(origin);
     if (!req.body) {
-      res.status(401).send("Faltan datos");
+      return res.status(401).send("Faltan datos");
     } else {
       await favorites.create({
         id,
@@ -17,10 +17,10 @@ const postFavController = async (req, res) => {
         status,
       });
       const updatedList = await favorites.findAll();
-      res.status(200).json(updatedList);
+      return res.status(200).json(updatedList);
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    return res.status(500).send(error.message);
   }
 };
 
@@ -33,9 +33,9 @@ const deleteFavController = async (req, res) => {
     if (deleteCharacter) deleteCharacter.destroy();
 
     const updatedList = await favorites.findAll();
-    res.status(200).json(updatedList);
+    return res.status(200).json(updatedList);
   } catch (error) {
-    res.status(500).send(error.message);
+    return res.status(500).send(error.message);
   }
 };
 
@@ -45,9 +45,9 @@ const clearFavController = async (req, res) => {
       where: {},
     });
     const updatedList = await favorites.findAll();
-    res.status(200).json(updatedList);
+    return res.status(200).json(updatedList);
   } catch (error) {
-    res.status(500).send(error.message);
+    return res.status(500).send(error.message);
   }
 };
 

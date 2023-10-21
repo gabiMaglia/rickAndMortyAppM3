@@ -5,7 +5,7 @@ import { validateUser } from "./validate.js";
 import GoBtn from "../common/GoBtn";
 
 // eslint-disable-next-line react/prop-types
-const Form = ({ loginFunction }) => {
+const Form = ({ registerFunction, loginFunction, loginOrRegister  }) => {
   /**
    * This function represents the contact form
    *
@@ -30,6 +30,7 @@ const Form = ({ loginFunction }) => {
 
   
   useEffect(() => {
+    console.log(loginOrRegister)
     if (errors.username !== 0 || errors.password !== 0) {
       errorFlagHandler(true);
     } else {

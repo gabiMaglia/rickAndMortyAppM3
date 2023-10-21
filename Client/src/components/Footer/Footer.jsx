@@ -46,7 +46,7 @@ const Footer = (props) => {
           clearBoard={props.clear}
         />
       ) : (
-        <p>Proyecto integrador Henry M2 / &copy; GMaglia</p>
+        <p>Proyecto integrador Henry M4 / &copy; GMaglia</p>
       )}
     </footer>
   );

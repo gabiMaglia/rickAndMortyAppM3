@@ -9,7 +9,7 @@ import rickFace from "../../assets/png/devilRick.png";
 import styles from "./NavBar.module.css";
 
 // eslint-disable-next-line react/prop-types
-const NavBar = ({ logoutFunction }) => {
+const NavBar = ({ logoutFunction, formHandler }) => {
   /**
    * This function represents the NavBar
    *
@@ -22,14 +22,17 @@ const NavBar = ({ logoutFunction }) => {
   const handleLogOut = () => {
     logoutFunction();
   };
-  const handleClick = () => {
-  
-    if (windowWidth.current < 767){
-      setClicked(!clicked);
-   
-  }
+
+  const handleTypeOfForm = () => {
+    formHandler();
   };
   
+  const handleClick = () => {
+    if (windowWidth.current > 767) {
+      setClicked(false);
+    } else setClicked(!clicked);
+  };
+
   return (
     <NavContainer className={styles.navBar}>
       <span className={styles.brand}>
@@ -50,7 +53,7 @@ const NavBar = ({ logoutFunction }) => {
             </li>
             <li className={styles.listItem}>
               <NavLink
-              onClick={handleClick}
+                onClick={handleClick}
                 to={ROUTES.HOME}
                 className={styles.navLink}
                 activeclassname={styles.active}
@@ -60,7 +63,7 @@ const NavBar = ({ logoutFunction }) => {
             </li>
             <li className={styles.listItem}>
               <NavLink
-              onClick={handleClick}
+                onClick={handleClick}
                 to={ROUTES.FAVORITE}
                 className={styles.navLink}
                 activeclassname={styles.active}
@@ -70,7 +73,7 @@ const NavBar = ({ logoutFunction }) => {
             </li>
             <li className={styles.listItem}>
               <NavLink
-              onClick={handleClick}
+                onClick={handleClick}
                 to={ROUTES.ABOUT}
                 className={styles.navLink}
                 activeclassname={styles.active}
@@ -80,13 +83,34 @@ const NavBar = ({ logoutFunction }) => {
             </li>
           </ul>
         ) : (
-          <NavBtn onClick={handleClick} content={"Log In"} />
+          <ul className={styles.navLink}>
+            <li className={styles.listItem}>
+              <NavLink
+                onClick={[handleTypeOfForm, handleClick]}
+                // to={ROUTES.LOGIN}
+                className={styles.navLink}
+                activeclassname={styles.active}
+              >
+                <NavBtn content={"Sing in"} />
+              </NavLink>
+            </li>
+            <li className={styles.listItem}>
+              <NavLink
+                onClick={[handleTypeOfForm, handleClick]}
+                // to={ROUTES.LOGIN}
+                className={styles.navLink}
+                activeclassname={styles.active}
+              >
+                <NavBtn content={"Log in"} />
+              </NavLink>
+            </li>
+          </ul>
         )}
       </div>
       <div className="burguer">
         <BurguerButton clicked={clicked} handleClick={handleClick} />
       </div>
-      <BgDiv className={`initial ${clicked ? ' active' : ''}`}></BgDiv>
+      <BgDiv className={`initial ${clicked ? " active" : ""}`}></BgDiv>
     </NavContainer>
   );
 };
@@ -94,8 +118,7 @@ const NavBar = ({ logoutFunction }) => {
 export default NavBar;
 
 const NavContainer = styled.nav`
- 
- h2 {
+  h2 {
     color: white;
     font-weight: 400;
     span {
@@ -103,7 +126,6 @@ const NavContainer = styled.nav`
     }
   }
 
- 
   display: flex;
   align-items: center;
   justify-content: space-between;
