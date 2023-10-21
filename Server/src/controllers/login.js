@@ -1,24 +1,24 @@
 const { user } = require("../db");
+const bcrypt = require('bcryptjs')
+
 
 const loginController = async (req, res) => {
 
   try {
     const { email, password } = req.query;
-
+    
     if (!email || email === "" || !password || password === "") {
       res.status(400).send("Faltan datos");
     }
-
     const newAcces = await user.findOne({
-      where: { user_handle: email, user_password: password },
+      where: { user_handle: email },
     });
+    if(!newAcces) return res.status(404).json({message: "User not found"});
+    const isCorrectPassword = await bcrypt.compare(password, newAcces.user_password)
+    if(!isCorrectPassword) return res.status(403).json({message: "Wrong password"});
+    return res.status(200).json({ access: true });
 
-    if (newAcces === null) {
-      console.log("Not found!");
-      res.status(200).json({ access: false });
-    } else {
-      res.status(200).json({ access: true });
-    }
+
   } catch (error) {
     res.status(500).send(error.message);
   }
