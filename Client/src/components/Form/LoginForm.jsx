@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-
 import styles from "./form.module.css";
 import { validateUser } from "./validate.js";
 import GoBtn from "../common/GoBtn";
 
 // eslint-disable-next-line react/prop-types
-const Form = ({ registerFunction, loginFunction, loginOrRegister  }) => {
+const LoginForm = ({ loginFunction  }) => {
   /**
    * This function represents the contact form
    *
@@ -112,7 +111,7 @@ const Form = ({ registerFunction, loginFunction, loginOrRegister  }) => {
           }
         />
         <div>
-          <GoBtn className="page_404__link" type="submit" content={"Go!"} />
+          <GoBtn type="submit" content={"Go!"} />
         </div>
         <span className={styles.errorChart}>
           <span className={styles.loginErrors}>
@@ -137,13 +136,13 @@ const Form = ({ registerFunction, loginFunction, loginOrRegister  }) => {
             )}
           </span>
         </span>
-        <p className={`  ${errorFlag ? styles.hide : styles.subtitle}`}>
+        {/* <p className={`  ${errorFlag ? styles.hide : styles.subtitle}`}>
           You can keep calm nothing here will affect you directly or indirecly
           neither in this universe or others...{" "}
-        </p>
+        </p> */}
       </form>
     </div>
   );
 };
 
-export default Form;
+export default LoginForm;

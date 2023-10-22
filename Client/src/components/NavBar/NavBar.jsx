@@ -23,8 +23,8 @@ const NavBar = ({ logoutFunction, formHandler }) => {
     logoutFunction();
   };
 
-  const handleTypeOfForm = () => {
-    formHandler();
+  const handleTypeOfForm = (e) => {
+    formHandler(e);
   };
   
   const handleClick = () => {
@@ -85,24 +85,20 @@ const NavBar = ({ logoutFunction, formHandler }) => {
         ) : (
           <ul className={styles.navLink}>
             <li className={styles.listItem}>
-              <NavLink
-                onClick={[handleTypeOfForm, handleClick]}
-                // to={ROUTES.LOGIN}
+              <span
+                onClick={(e) => handleTypeOfForm(e)}
                 className={styles.navLink}
-                activeclassname={styles.active}
               >
                 <NavBtn content={"Sing in"} />
-              </NavLink>
+              </span>
             </li>
             <li className={styles.listItem}>
-              <NavLink
-                onClick={[handleTypeOfForm, handleClick]}
-                // to={ROUTES.LOGIN}
+              <span
+                onClick={(e) => handleTypeOfForm(e)}
                 className={styles.navLink}
-                activeclassname={styles.active}
               >
                 <NavBtn content={"Log in"} />
-              </NavLink>
+              </span>
             </li>
           </ul>
         )}

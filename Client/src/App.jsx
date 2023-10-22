@@ -2,14 +2,14 @@
 // DEPs AND HOOKS
 import { loginService, singInService } from "./services/apiCall";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 // COMPONENTS
 import StarsBackground from "./components/StarBackground/StarsBackground.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 // VIEWS
-import Login from "./views/Login/Login.jsx";
+import LoginPage from "./views/Login/LoginPage.jsx";
 import CardBoard from "./views/CardBoard/CardsBoard.jsx";
 import CardDetail from "./views/CardDetail/CardDetail.jsx";
 import { AboutMe } from "./views/AboutMe/AboutMe.jsx";
@@ -29,16 +29,13 @@ function App() {
   // Log in data
   const [access, setAccess] = useLocalStorage("acces", false);
   const maxCharacters = 826;
-  const [loginOrRegister, setloginOrRegister] = useState('login')
-
+  const [loginOrRegister, setloginOrRegister] = useState("register");
 
   const formHandler = (e) => {
-   const button = e.target.innerHTML
-   console.log(e.target.innerHTML)
-   if(button === 'Log in') setloginOrRegister('login')
-   if(button === 'Sing in') setloginOrRegister('singin')
-   console.log(loginOrRegister)
-  }
+    const button = e.target.innerHTML;
+    if (button === "Log in") setloginOrRegister("login");
+    if (button === "Sing in") setloginOrRegister("register");
+  };
   const login = (userData) => {
     /**
      * Login Function
@@ -125,11 +122,17 @@ function App() {
       <StarsBackground />
 
       <main className="mainLayout">
-        <NavBar logoutFunction={logout} formHandler = {formHandler} />
+        <NavBar logoutFunction={logout} formHandler={formHandler} />
         <Routes>
           <Route
             path={ROUTES.LOGIN}
-            element={<Login registerFunction={register} loginFunction={login} loginOrRegister={loginOrRegister} />}
+            element={
+              <LoginPage
+                registerFunction={register}
+                loginFunction={login}
+                loginOrRegister={loginOrRegister}
+              />
+            }
           />
           <Route element={<ProtectedRoutes access={access} />}>
             <Route
@@ -153,7 +156,5 @@ function App() {
     </div>
   );
 }
-
-
 
 export default App;
