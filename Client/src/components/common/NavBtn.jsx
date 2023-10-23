@@ -6,13 +6,14 @@ import styled from "styled-components";
  *
  * @returns {React.JSX}
  */
-const NavBtn = ({ content, type }) => {
-  return <SearchButton type={type}>{content}</SearchButton>;
+const NavBtn = ({ content, type, color }) => {
+ 
+  return <SearchButton style={{color:`${color? color : 'var(--mainFontColor)' }`}} type={type}>{content}</SearchButton>;
 };
 const SearchButton = styled.button`
   /* for button */
   text-decoration: none;
-  color: var(--mainFontColor);
+ 
   text-decoration: none;
   text-transform: uppercase;
   text-align: right;
@@ -25,8 +26,12 @@ const SearchButton = styled.button`
 
   background: none;
   border: none;
-  padding: 0;
+  padding: 10px;
   margin: 0;
   font: inherit;
+  
+  &::hover {
+    color: white;
+  }
 `;
 export default NavBtn;

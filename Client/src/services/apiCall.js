@@ -13,8 +13,7 @@ export const fetchCharacterById = async (id) => {
     const data = response.json();
     return data;
   } catch (error) {
-    console.log(error);
-    throw error;
+    return error.message
   }
 };
 export const fetchAllData = async () => {
@@ -30,8 +29,7 @@ export const fetchAllData = async () => {
     const data = response.json();
     return data;
   } catch (error) {
-    console.log(error);
-    throw error;
+    return error.message
   }
 };
 
@@ -42,10 +40,11 @@ export const loginService = async (email, password) => {
         import.meta.env.VITE_API_ADDRES
       }/login?email=${email}&password=${password}`
     );
+    
     return response.data;
   } catch (error) {
-    console.log(error);
-    throw error;
+    return error
+    
   }
 };
 export const singInService = async (first_name, last_name, user_email,  user_handle, user_password) => {
@@ -63,8 +62,7 @@ export const singInService = async (first_name, last_name, user_email,  user_han
     );
     return response.data;
   } catch (error) {
-    console.log(error);
-    throw error;
+    return error.message
   }
 };
 

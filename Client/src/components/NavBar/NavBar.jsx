@@ -9,7 +9,7 @@ import rickFace from "../../assets/png/devilRick.png";
 import styles from "./NavBar.module.css";
 
 // eslint-disable-next-line react/prop-types
-const NavBar = ({ logoutFunction, formHandler }) => {
+const NavBar = ({ logoutFunction, formHandler, loginOrRegister }) => {
   /**
    * This function represents the NavBar
    *
@@ -89,7 +89,7 @@ const NavBar = ({ logoutFunction, formHandler }) => {
                 onClick={(e) => handleTypeOfForm(e)}
                 className={styles.navLink}
               >
-                <NavBtn content={"Sing in"} />
+                <NavBtn  color={loginOrRegister !== 'register' && 'grey'} content={"Sing in"} />
               </span>
             </li>
             <li className={styles.listItem}>
@@ -97,7 +97,7 @@ const NavBar = ({ logoutFunction, formHandler }) => {
                 onClick={(e) => handleTypeOfForm(e)}
                 className={styles.navLink}
               >
-                <NavBtn content={"Log in"} />
+                <NavBtn color={loginOrRegister !== 'login' && 'grey'} content={"Log in"} />
               </span>
             </li>
           </ul>

@@ -83,7 +83,7 @@ const RegisterForm = ({ registerFunction  }) => {
         onSubmit={handleFormSubmit}
   
       >
-        <label htmlFor="user">First Name:</label>
+        <label htmlFor="user">First Name</label>
         <input
           type="text"
           value={userData.username}
@@ -91,7 +91,7 @@ const RegisterForm = ({ registerFunction  }) => {
           onChange={handleFormChange}
          
         />
-        <label htmlFor="user">Last Name:</label>
+        <label htmlFor="user">Last Name</label>
         <input
           type="text"
           value={userData.username}
@@ -99,7 +99,7 @@ const RegisterForm = ({ registerFunction  }) => {
           onChange={handleFormChange}
         
         />
-        <label htmlFor="user">Email:</label>
+        <label htmlFor="user">Email</label>
         <input
           type="text"
           value={userData.username}
@@ -107,7 +107,7 @@ const RegisterForm = ({ registerFunction  }) => {
           onChange={handleFormChange}
          
         />
-        <label htmlFor="user">Username:</label>
+        <label htmlFor="user">Username</label>
         <input
           type="text"
           value={userData.username}
@@ -122,7 +122,7 @@ const RegisterForm = ({ registerFunction  }) => {
           }
         />
 
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">Password</label>
         <input
           onChange={handleFormChange}
           type="text"
@@ -162,10 +162,7 @@ const RegisterForm = ({ registerFunction  }) => {
             )}
           </span>
         </span>
-        {/* <p className={`  ${errorFlag ? styles.hide : styles.subtitle}`}>
-          You can keep calm nothing here will affect you directly or indirecly
-          neither in this universe or others...{" "}
-        </p> */}
+  
       </form>
     </div>
   );

@@ -37,21 +37,15 @@ function App() {
     if (button === "Sing in") setloginOrRegister("register");
   };
   const login = (userData) => {
-    /**
-     * Login Function
-     * @param {object} userCredentials - Credenciales de inicio de sesión.
-     * @param {string} userCredentials.username - El nombre de usuario para iniciar sesión.
-     * @param {string} userCredentials.password - La contraseña para iniciar sesión.
-     */
-
     const { username, password } = userData;
 
     loginService(username, password).then((data) => {
+      console.log(data)
       if (data.access) {
         setAccess(true);
         navigate("/home");
       } else {
-        alert("Email or password invalid");
+        return ("Email or password invalid");
       }
     });
   };
@@ -122,7 +116,7 @@ function App() {
       <StarsBackground />
 
       <main className="mainLayout">
-        <NavBar logoutFunction={logout} formHandler={formHandler} />
+        <NavBar logoutFunction={logout} formHandler={formHandler} loginOrRegister= {loginOrRegister} />
         <Routes>
           <Route
             path={ROUTES.LOGIN}

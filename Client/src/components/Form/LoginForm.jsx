@@ -65,7 +65,8 @@ const LoginForm = ({ loginFunction  }) => {
      *
      */
     e.preventDefault();
-    loginFunction(userData);
+    const response = loginFunction(userData);
+    console.log(response)
   };
 
   return (
@@ -81,7 +82,7 @@ const LoginForm = ({ loginFunction  }) => {
         onSubmit={handleFormSubmit}
   
       >
-        <label htmlFor="user">Username:</label>
+        <label htmlFor="user">Username</label>
         <input
           type="text"
           value={userData.username}
@@ -96,7 +97,7 @@ const LoginForm = ({ loginFunction  }) => {
           }
         />
 
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">Password</label>
         <input
           onChange={handleFormChange}
           type="password"
@@ -136,10 +137,6 @@ const LoginForm = ({ loginFunction  }) => {
             )}
           </span>
         </span>
-        {/* <p className={`  ${errorFlag ? styles.hide : styles.subtitle}`}>
-          You can keep calm nothing here will affect you directly or indirecly
-          neither in this universe or others...{" "}
-        </p> */}
       </form>
     </div>
   );
