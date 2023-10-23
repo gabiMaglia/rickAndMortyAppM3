@@ -59,16 +59,19 @@ const LoginForm = ({ loginFunction  }) => {
     }
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit =  (e) => {
     /**
      * This function handles reaction of submiting the imputs
      * writes the states and check the errores
      *
      */
     e.preventDefault();
-    const response = await loginFunction(userData);
-    // console.log( typeof response)
-    // useErrorAlert(response)
+    setUserData({
+      username: "",
+      password: "",
+    })
+    loginFunction(userData);
+
   };
 
   return (

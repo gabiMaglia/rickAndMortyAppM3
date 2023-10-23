@@ -5,29 +5,22 @@ const useErrorAlert = (message, statusCode) => {
   const MySwal = withReactContent(Swal);
   let timerInterval;
 
- const paseMessage = JSON.parse(message) 
+ const paseMessage = JSON.parse(message).message 
 
   MySwal.fire({
     title: statusCode,
-    html:  paseMessage.message ,
+    html:  paseMessage,
     timer: 2000,
     timerProgressBar: true,
     didOpen: () => {
       Swal.showLoading();
-
       timerInterval = setInterval(() => {
-        
       }, 100);
     },
     willClose: () => {
       clearInterval(timerInterval);
     },
-  }).then((result) => {
-    /* Read more about handling dismissals below */
-    // if (result.dismiss === Swal.DismissReason.timer) {
-    //   console.log("I was closed by the timer");
-    // }
-  });
+  })
 };
 
 export default useErrorAlert;
