@@ -29,7 +29,7 @@ function App() {
   // Log in data
   const [access, setAccess] = useLocalStorage("acces", false);
   const maxCharacters = 826;
-  const [loginOrRegister, setloginOrRegister] = useState("register");
+  const [loginOrRegister, setloginOrRegister] = useState("login");
 
   const formHandler = (e) => {
     const button = e.target.innerHTML;
@@ -40,7 +40,7 @@ function App() {
     const { username, password } = userData;
 
     loginService(username, password).then((data) => {
-      console.log(data)
+      if (data.message) return data
       if (data.access) {
         setAccess(true);
         navigate("/home");
