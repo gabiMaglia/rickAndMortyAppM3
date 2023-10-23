@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./form.module.css";
 import { validateUser } from "./validate.js";
 import GoBtn from "../common/GoBtn";
-
+import useErrorAlert from "../common/useErrorAlert";
 // eslint-disable-next-line react/prop-types
 const LoginForm = ({ loginFunction  }) => {
   /**
@@ -26,7 +26,8 @@ const LoginForm = ({ loginFunction  }) => {
     username: "",
     password: "",
   });
-
+// submit errors
+  const [submitError, setSubmitError] = useState('');
   
   useEffect(() => {
     if (errors.username !== 0 || errors.password !== 0) {
@@ -58,15 +59,16 @@ const LoginForm = ({ loginFunction  }) => {
     }
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     /**
      * This function handles reaction of submiting the imputs
      * writes the states and check the errores
      *
      */
     e.preventDefault();
-    const response = loginFunction(userData);
-    console.log(response)
+    const response = await loginFunction(userData);
+    // console.log( typeof response)
+    // useErrorAlert(response)
   };
 
   return (

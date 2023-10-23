@@ -8,6 +8,7 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 import StarsBackground from "./components/StarBackground/StarsBackground.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import useErrorAlert from "./components/common/useErrorAlert";
 // VIEWS
 import LoginPage from "./views/Login/LoginPage.jsx";
 import CardBoard from "./views/CardBoard/CardsBoard.jsx";
@@ -36,16 +37,15 @@ function App() {
     if (button === "Log in") setloginOrRegister("login");
     if (button === "Sing in") setloginOrRegister("register");
   };
-  const login = (userData) => {
+  const login = async (userData) => {
     const { username, password } = userData;
 
-    loginService(username, password).then((data) => {
-      if (data.message) return data
+   loginService(username, password).then((data) => {
+      
+      if (data.status > 399)  useErrorAlert(data.response, data.status);
       if (data.access) {
         setAccess(true);
         navigate("/home");
-      } else {
-        return ("Email or password invalid");
       }
     });
   };

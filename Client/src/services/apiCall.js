@@ -13,7 +13,7 @@ export const fetchCharacterById = async (id) => {
     const data = response.json();
     return data;
   } catch (error) {
-    return error.message
+    return JSON.parse(error.request.response)
   }
 };
 export const fetchAllData = async () => {
@@ -29,7 +29,7 @@ export const fetchAllData = async () => {
     const data = response.json();
     return data;
   } catch (error) {
-    return error.message
+    return JSON.parse(error.request.response)
   }
 };
 
@@ -43,7 +43,8 @@ export const loginService = async (email, password) => {
     
     return response.data;
   } catch (error) {
-    return error
+    const response = error.request
+    return response
     
   }
 };
@@ -62,7 +63,7 @@ export const singInService = async (first_name, last_name, user_email,  user_han
     );
     return response.data;
   } catch (error) {
-    return error.message
+    return JSON.parse(error.request.response)
   }
 };
 
