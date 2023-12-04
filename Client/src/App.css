@@ -1,8 +1,4 @@
 .App {
- /* display: flex;
- flex-direction: column; */
- /* height: 100vh; */
- /* max-height: 100svh; */
  box-sizing: border-box;
  text-align: center;
 }
@@ -12,6 +8,7 @@
     width: 100%;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    overflow-y: scroll;
 
 }
 

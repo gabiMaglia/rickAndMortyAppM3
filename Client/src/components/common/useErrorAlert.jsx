@@ -5,7 +5,7 @@ const useErrorAlert = (message, statusCode) => {
   const MySwal = withReactContent(Swal);
   let timerInterval;
 
- const paseMessage = JSON.parse(message).message 
+ const paseMessage = message 
 
   MySwal.fire({
     title: statusCode,

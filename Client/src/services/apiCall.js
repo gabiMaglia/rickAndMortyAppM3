@@ -13,9 +13,21 @@ export const fetchCharacterById = async (id) => {
     const data = response.json();
     return data;
   } catch (error) {
-    return JSON.parse(error.request.response)
+    return JSON.parse(error.request.response);
   }
 };
+
+export const fetchMaxCharacters = async () => {
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_ADDRES}/maxChar`
+    );
+    return response.data;
+  } catch (error) {
+    return JSON.parse(error.request.response);
+  }
+};
+
 export const fetchAllData = async () => {
   /**
    * This function fetchs all chracters
@@ -29,7 +41,7 @@ export const fetchAllData = async () => {
     const data = response.json();
     return data;
   } catch (error) {
-    return JSON.parse(error.request.response)
+    return JSON.parse(error.request.response);
   }
 };
 
@@ -40,30 +52,34 @@ export const loginService = async (email, password) => {
         import.meta.env.VITE_API_ADDRES
       }/login?email=${email}&password=${password}`
     );
-    
+
     return response.data;
   } catch (error) {
-    const response = error.request
-    return response
-    
+    const response = error.request;
+    return response;
   }
 };
-export const singInService = async (first_name, last_name, user_email,  user_handle, user_password) => {
+export const singInService = async (
+  first_name,
+  last_name,
+  user_email,
+  user_handle,
+  user_password
+) => {
   try {
     const response = await axios.post(
-      `${
-        import.meta.env.VITE_API_ADDRES
-      }/newUser`, {
-        first_name, 
-        last_name, 
-        user_email,  
-        user_handle, 
-        user_password
+      `${import.meta.env.VITE_API_ADDRES}/newuser`,
+      {
+        first_name,
+        last_name,
+        user_email,
+        user_handle,
+        user_password,
       }
     );
     return response.data;
   } catch (error) {
-    return JSON.parse(error.request.response)
+    return error.request;
   }
 };
 

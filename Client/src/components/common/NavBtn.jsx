@@ -13,7 +13,6 @@ const NavBtn = ({ content, type, color }) => {
 const SearchButton = styled.button`
   /* for button */
   text-decoration: none;
- 
   text-decoration: none;
   text-transform: uppercase;
   text-align: right;

@@ -1,8 +1,12 @@
 //////////////////////////////////////////////////////////////
 // DEPs AND HOOKS
-import { loginService, singInService } from "./services/apiCall";
+import {
+  fetchMaxCharacters,
+  loginService,
+  singInService,
+} from "./services/apiCall";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 // COMPONENTS
 import StarsBackground from "./components/StarBackground/StarsBackground.jsx";
@@ -26,11 +30,21 @@ import ProtectedRoutes from "./helpers/ProtectedRoutes.jsx";
 function App() {
   // Card collection state
   const [character, setCharacter] = useState([]);
+  const [maxCharacters, setMaxCharacters] = useState(0);
   const navigate = useNavigate();
   // Log in data
   const [access, setAccess] = useLocalStorage("acces", false);
-  const maxCharacters = 826;
+  // const maxCharacters = 826;
   const [loginOrRegister, setloginOrRegister] = useState("login");
+
+  useEffect(() => {
+    if (maxCharacters === 0) {
+      fetchMaxCharacters().then((data) => {
+        setMaxCharacters(data);
+        console.log(data);
+      });
+    }
+  }, [maxCharacters]);
 
   const formHandler = (e) => {
     const button = e.target.innerHTML;
@@ -40,9 +54,8 @@ function App() {
   const login = async (userData) => {
     const { username, password } = userData;
 
-   loginService(username, password).then((data) => {
-      
-      if (data.status > 399)  useErrorAlert(data.response, data.status);
+    loginService(username, password).then((data) => {
+      if (data.status > 399) useErrorAlert(data.response, data.status);
       if (data.access) {
         setAccess(true);
         navigate("/home");
@@ -61,11 +74,18 @@ function App() {
       user_handle,
       user_password
     ).then((data) => {
-      if (data) {
-        navigate("/login");
-      } else {
-        alert("Error try again");
+     
+      if (data.status > 399) useErrorAlert(data.response, data.status);
+      else {
+       useErrorAlert("User created", 200) 
+       setTimeout(() => {
+         window.location.reload(); 
+        
+       }, 600);
+
       }
+      
+     
     });
   };
   const logout = () => {
@@ -116,7 +136,11 @@ function App() {
       <StarsBackground />
 
       <main className="mainLayout">
-        <NavBar logoutFunction={logout} formHandler={formHandler} loginOrRegister= {loginOrRegister} />
+        <NavBar
+          logoutFunction={logout}
+          formHandler={formHandler}
+          loginOrRegister={loginOrRegister}
+        />
         <Routes>
           <Route
             path={ROUTES.LOGIN}

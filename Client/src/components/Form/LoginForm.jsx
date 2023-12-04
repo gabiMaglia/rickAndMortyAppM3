@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import styles from "./form.module.css";
 import { validateUser } from "./validate.js";
 import GoBtn from "../common/GoBtn";
-import useErrorAlert from "../common/useErrorAlert";
 // eslint-disable-next-line react/prop-types
 const LoginForm = ({ loginFunction  }) => {
   /**
@@ -10,6 +9,7 @@ const LoginForm = ({ loginFunction  }) => {
    *
    * @returns {React.JSX}
    */
+  // eslint-disable-next-line no-unused-vars
   const [errorFlag, setErrorFlag] = useState(false);
 
   const errorFlagHandler = (errorWillBe) => {
@@ -27,7 +27,7 @@ const LoginForm = ({ loginFunction  }) => {
     password: "",
   });
 // submit errors
-  const [submitError, setSubmitError] = useState('');
+
   
   useEffect(() => {
     if (errors.username !== 0 || errors.password !== 0) {

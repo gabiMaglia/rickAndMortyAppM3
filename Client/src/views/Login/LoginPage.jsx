@@ -14,7 +14,7 @@ import styles from "./login.module.css";
 const LoginPage = ({ registerFunction, loginFunction, loginOrRegister }) => {
   return (
     <section className={styles.loginPage}>
-      <img className={styles.imgLogo} src={mainLogo} alt="" />
+     {loginOrRegister === "login" && <img className={styles.imgLogo} src={mainLogo} alt="" />}
 
       <span className={styles.formCont}>
         <h1 className={styles.title}>Rick and Morty</h1>

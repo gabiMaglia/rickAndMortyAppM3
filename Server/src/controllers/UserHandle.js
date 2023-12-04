@@ -12,6 +12,7 @@ const getUsers = async (req, res) => {
 
 const postUser = async (req, res) => {
   try {
+    console.log('llego')
     console.log(req.body)
     const { first_name, last_name, user_email, user_handle } = req.body;
     let { user_password } = req.body;

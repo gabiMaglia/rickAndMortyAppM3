@@ -1,9 +1,10 @@
 .loginPage {
   display: grid;
   place-content: center;
-
-  height: calc(100svh - 10.5rem);
+  min-height: calc(100vh - 16.5rem);
+  height: 100%;
   text-shadow: var(--mainFontColor) 1px 0 5px;
+  
 }
 .imgLogo {
   margin-inline: auto;
@@ -17,12 +18,13 @@
   font-size: 140%;
   letter-spacing: 3px;
   animation: neonLogo 4.5s ease-in-out infinite alternate,
-    titleComming 1s ease-in;
+  titleComming 1s ease-in;
 }
 
 .formCont {
   animation: floshUp 1.8s ease-in;
   padding-block: 1rem;
+
 }
 
 @media screen and (min-width: 992px) {
