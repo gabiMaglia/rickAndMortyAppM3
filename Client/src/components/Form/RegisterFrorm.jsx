@@ -27,8 +27,9 @@ const RegisterForm = ({ registerFunction }) => {
         validationSchema = {yupRegisterValidation} 
         onSubmit =
         {(values, { setSubmitting }) => {
+         registerFunction(values)
+          
           setSubmitting(false);
-          registerFunction(values)
         }}
         >
         {({ isSubmitting }) => (

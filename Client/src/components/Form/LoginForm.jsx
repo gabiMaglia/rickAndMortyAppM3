@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import styles from "./form.module.css";
 import { validateUser } from "./validate.js";
 import GoBtn from "../common/GoBtn";
+import styles from "./form.module.css";
 // eslint-disable-next-line react/prop-types
 const LoginForm = ({ loginFunction  }) => {
   /**

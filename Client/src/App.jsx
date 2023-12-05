@@ -74,18 +74,13 @@ function App() {
       user_handle,
       user_password
     ).then((data) => {
-     
       if (data.status > 399) useErrorAlert(data.response, data.status);
       else {
-       useErrorAlert("User created", 200) 
-       setTimeout(() => {
-         window.location.reload(); 
-        
-       }, 600);
-
+        useErrorAlert("User created", 200);
+        setTimeout(() => {
+          window.location.reload();
+        }, 600);
       }
-      
-     
     });
   };
   const logout = () => {
