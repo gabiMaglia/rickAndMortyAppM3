@@ -25,13 +25,13 @@ const LoginPage = ({ registerFunction, loginFunction, loginOrRegister }) => {
             loginFunction={loginFunction}
           />
         )}
+      </span>
         {loginOrRegister === "register" && (
           <RegisterForm
             className={styles.loginForm}
             registerFunction={registerFunction}
           />
         )}
-      </span>
     </section>
   );
 };

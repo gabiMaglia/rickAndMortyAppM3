@@ -82,6 +82,7 @@ const LoginForm = ({ loginFunction  }) => {
           <strong className={styles.mainTitle}>Enter your credentials please.</strong>
         </span>
       </div>
+      
       <form
         className={styles.loginForm}
         onSubmit={handleFormSubmit}

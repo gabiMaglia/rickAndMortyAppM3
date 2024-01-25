@@ -1,14 +1,8 @@
 .App {
- box-sizing: border-box;
- text-align: center;
+  text-align: center;
 }
 
 .mainLayout {
-    /* height: 100dvh; */
-    width: 100%;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    overflow-y: scroll;
-
+  height: 100svb;
+  overflow-y: scroll;
 }
-

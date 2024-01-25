@@ -2,14 +2,15 @@
   display: grid;
   place-content: center;
   min-height: calc(100vh - 16.5rem);
-  height: 100%;
+  width: 100%;
+  padding-top: 3rem;
   text-shadow: var(--mainFontColor) 1px 0 5px;
   
 }
 .imgLogo {
   margin-inline: auto;
-  width: 52%;
-  max-width: 270px;
+  width: 65%;
+  max-width: 300px;
   animation: floshUp 2.9s ease-in;
 }
 

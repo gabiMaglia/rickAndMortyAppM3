@@ -127,46 +127,48 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <>
       <StarsBackground />
 
-      <main className="mainLayout">
-        <NavBar
-          logoutFunction={logout}
-          formHandler={formHandler}
-          loginOrRegister={loginOrRegister}
-        />
-        <Routes>
-          <Route
-            path={ROUTES.LOGIN}
-            element={
-              <LoginPage
-                registerFunction={register}
-                loginFunction={login}
-                loginOrRegister={loginOrRegister}
-              />
-            }
+      <div className="App">
+          <NavBar
+            logoutFunction={logout}
+            formHandler={formHandler}
+            loginOrRegister={loginOrRegister}
           />
-          <Route element={<ProtectedRoutes access={access} />}>
+        <main className="mainLayout">
+          <Routes>
             <Route
-              path={ROUTES.HOME}
-              element={<CardBoard characters={character} close={closeCard} />}
+              path={ROUTES.LOGIN}
+              element={
+                <LoginPage
+                  registerFunction={register}
+                  loginFunction={login}
+                  loginOrRegister={loginOrRegister}
+                />
+              }
             />
-            <Route path={ROUTES.FAVORITE} element={<Favorites />} />
-            <Route path="/details/:id" element={<CardDetail />} />
-            <Route path={ROUTES.ABOUT} element={<AboutMe />} />
-          </Route>
+            <Route element={<ProtectedRoutes access={access} />}>
+              <Route
+                path={ROUTES.HOME}
+                element={<CardBoard characters={character} close={closeCard} />}
+              />
+              <Route path={ROUTES.FAVORITE} element={<Favorites />} />
+              <Route path="/details/:id" element={<CardDetail />} />
+              <Route path={ROUTES.ABOUT} element={<AboutMe />} />
+            </Route>
 
-          <Route path="/*" element={<Error404 />} />
-        </Routes>
+            <Route path="/*" element={<Error404 />} />
+          </Routes>
 
-        <Footer
-          maxChar={maxCharacters}
-          addCharacter={addCard}
-          clear={clearBoard}
-        />
-      </main>
-    </div>
+        </main>
+          <Footer
+            maxChar={maxCharacters}
+            addCharacter={addCard}
+            clear={clearBoard}
+          />
+      </div>
+    </>
   );
 }
 

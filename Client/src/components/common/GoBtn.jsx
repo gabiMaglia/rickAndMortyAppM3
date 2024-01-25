@@ -4,7 +4,7 @@ import { styled } from 'styled-components'
 
 const GoBtn = ({content}) => {
   return (
-    <GoButton>{content}</GoButton>
+    <GoButton type='submit'>{content}</GoButton>
   )
 }
 
