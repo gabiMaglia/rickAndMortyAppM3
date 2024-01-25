@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import NavBtn from "../common/NavBtn";
 import { connect } from "react-redux";
 import { clearFav } from "../../redux/actions";
+import StarsBackground from "../StarBackground/StarsBackground";
 
 /**
  * This function represents the Footer
@@ -28,9 +29,9 @@ const Footer = (props) => {
      */
     props.clearFav();
   };
-
   return (
     <footer className={style.footer}>
+      <StarsBackground />
       {location.pathname === "/favorite" ? (
         <span style={{ cursor: "pointer" }} onClick={handleClear}>
           <NavBtn content={"clear"} />

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const getCharByIdController = require("../controllers/GetCharById");
-const { postFavController, deleteFavController, clearFavController } = require("../controllers/handleFavorites");
+const { postFavController, deleteFavController, clearFavController, getFavsController } = require("../controllers/handleFavorites");
 const loginController = require("../controllers/login");
 const { findAllEpisodes, createEpisode } = require("../controllers/handleEpisodes");
 const {postUser, getUsers }= require("../controllers/UserHandle");
@@ -13,6 +13,7 @@ router
   .get('/maxchar', getMaxCharacters)
   .get("/episodes", findAllEpisodes)
   .get("/getUsers", getUsers)
+  .get('/fav', getFavsController)
   .post("/login/", loginController)
   .post("/newuser", postUser)
   .post("/episodes", createEpisode)

@@ -1,4 +1,5 @@
 import {
+  GET_FAVORITE,
   ADD_FAVORITE,
   REMOVE_FAVORITE,
   CLEAR_FAVORITE,
@@ -18,6 +19,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
    */
 
   switch (type) {
+    case GET_FAVORITE:
+      return { ...state, myFavorites: payload};
     case ADD_FAVORITE:
       return { ...state, myFavorites: payload, allCharacters: payload };
     case REMOVE_FAVORITE:

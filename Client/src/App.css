@@ -3,6 +3,6 @@
 }
 
 .mainLayout {
-  height: 100svb;
+  height: calc(100svh - 9rem);
   overflow-y: scroll;
 }

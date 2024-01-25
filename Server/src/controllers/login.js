@@ -9,7 +9,7 @@ const loginController = async (req, res) => {
       return res.status(400).send("Faltan datos");
     }
     const newAcces = await user.findOne({
-      where: { user_handle: email },
+      where: { user_email: email },
     });
    
     if (!newAcces) return res.status(404).send({ message: "User not found" });

@@ -22,14 +22,14 @@ const RegisterForm = ({ registerFunction }) => {
             first_name: "",
             last_name: "",
             user_email: "",
-            user_handle: "",
             user_password: "",
             confirm_password: "",
           }}
           validationSchema={yupRegisterValidation}
           onSubmit={(values, { setSubmitting }) => {
             registerFunction(values);
-            setSubmitting(false);
+            setSubmitting(false)
+            console.log('ando');
           }}
         >
           {({ isSubmitting }) => (
@@ -47,18 +47,16 @@ const RegisterForm = ({ registerFunction }) => {
                   <ErrorMessage name="user_email" component="span" />
                 </div>
                 <div>
-                  <label htmlFor="user">Username</label>
-                  <Field type="text" name="user_handle" />
-                  <ErrorMessage name="user_handle" component="span" />
                   <label htmlFor="password">Password</label>
-                  <Field type="text" name="user_password" />
+                  <Field type="password"  name="user_password" />
                   <ErrorMessage name="user_password" component="span" />
                   <label htmlFor="confirm_password">Confirm password</label>
-                  <Field type="text" name="confirm_password" />
-                  <ErrorMessage name="confirm_password" component="span" />
+                  <Field type="password"  name="confirm_password" />
+                  <ErrorMessage  name="confirm_password" component="span" />
                 </div>
               <div className={styles.submitBtn}>
                 <GoBtn
+                  type="submit"
                   disabled={isSubmitting}
                   content={"Create!"}
                 />

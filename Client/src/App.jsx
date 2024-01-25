@@ -25,6 +25,8 @@ import "./App.css";
 import ROUTES from "./helpers/routes.helper.js";
 import { fetchCharacterById } from "./services/apiCall.js";
 import ProtectedRoutes from "./helpers/ProtectedRoutes.jsx";
+import { useDispatch } from "react-redux";
+import { getFavFromDb } from "./redux/actions.js";
 //////////////////////////////////////////////////////////////
 
 function App() {
@@ -36,12 +38,11 @@ function App() {
   const [access, setAccess] = useLocalStorage("acces", false);
   // const maxCharacters = 826;
   const [loginOrRegister, setloginOrRegister] = useState("login");
-
+  const dispatch = useDispatch()
   useEffect(() => {
     if (maxCharacters === 0) {
       fetchMaxCharacters().then((data) => {
         setMaxCharacters(data);
-        console.log(data);
       });
     }
   }, [maxCharacters]);
@@ -55,23 +56,23 @@ function App() {
     const { username, password } = userData;
 
     loginService(username, password).then((data) => {
-      if (data.status > 399) useErrorAlert(data.response, data.status);
+      if (data.status > 399) useErrorAlert(JSON.parse(data.response).message, data.status);
       if (data.access) {
         setAccess(true);
         navigate("/home");
+        dispatch(getFavFromDb())
       }
     });
   };
 
   const register = (userData) => {
-    const { first_name, last_name, user_email, user_handle, user_password } =
+    const { first_name, last_name, user_email, user_password } =
       userData;
 
     singInService(
       first_name,
       last_name,
       user_email,
-      user_handle,
       user_password
     ).then((data) => {
       if (data.status > 399) useErrorAlert(data.response, data.status);
@@ -96,6 +97,7 @@ function App() {
      * @param {number} id - The id of the chracter.
      * Adds a new element  to the state.
      */
+   
     try {
       fetchCharacterById(id).then((data) => {
         const isDuplicate = character.some((char) => char.id === data.id);

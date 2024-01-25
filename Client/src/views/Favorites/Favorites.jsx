@@ -6,9 +6,10 @@ import StarBackground from "../../components/StarBackground/StarsBackground";
 import peackeRick from "../../assets/png/PickleRick.png";
 import styles from "./favorites.module.css";
 
-const Favorites = ({ myFavorites }) => {
+const Favorites = ( {myFavorites} ) => {
   const dispatch = useDispatch();
-
+  const [aux, setAux] = useState(false);
+  
   const handleOrder = (e) => {
     dispatch(orderCards(e.target.value));
     setAux(!aux);
@@ -17,13 +18,26 @@ const Favorites = ({ myFavorites }) => {
     dispatch(filterCards(e.target.value));
     setAux(!aux);
   };
-
-  const [aux, setAux] = useState(false);
-
   return (
-    <div className={styles.favoritesCont}>
-      <div className={styles.cardBoard}>
-        <StarBackground />
+    <>
+      <StarBackground />
+      <div className={styles.favoritesCont}>
+        <div className={styles.customSelect}>
+          <label htmlFor="Order">Id: </label>
+          <select onChange={handleOrder} name="Order" id="">
+            <option value="A">Ascendente</option>
+            <option value="B">Descendente</option>
+          </select>
+
+          <label htmlFor="Filter"> Gender: </label>
+          <select onChange={handleFilter} name="Filter" id="">
+            <option value="All">All</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Genderless">Genderless</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </div>
         {myFavorites.length === 0 ? (
           <div
             style={{
@@ -41,24 +55,7 @@ const Favorites = ({ myFavorites }) => {
             <p>Add at least one card to the board</p>
           </div>
         ) : (
-          <>
-            <div className={styles.customSelect}>
-              <label htmlFor="Order">Id: </label>
-              <select onChange={handleOrder} name="Order" id="">
-                <option value="A">Ascendente</option>
-                <option value="B">Descendente</option>
-              </select>
-  
-              <label htmlFor="Filter"> Gender: </label>
-              <select onChange={handleFilter} name="Filter" id="">
-                <option value="All">All</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Genderless">Genderless</option>
-                <option value="unknown">Unknown</option>
-              </select>
-            </div>
-  
+          <div className={styles.cardBoard}>
             {myFavorites.map((e, key) => (
               <Card
                 key={key}
@@ -70,12 +67,12 @@ const Favorites = ({ myFavorites }) => {
                 image={e.image}
               />
             ))}
-          </>
+          </div>
         )}
       </div>
-    </div>
+    </>
   );
-            }
+};
 
 const mapStateToProps = (state) => {
   return {

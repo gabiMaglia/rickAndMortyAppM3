@@ -1,77 +1,55 @@
-.favoritesCont{
-  max-width: 100vw;
-  margin-bottom: 3rem ;
-  overflow-y: auto; 
-  height: calc(100svh - 10.5rem);
-  max-height: calc(100vh - 4rem); 
+.favoritesCont {
   text-shadow: var(--mainFontColor) 1px 0 5px;
-  
-
-  /* display: grid; */
-  /* place-content: center; */
-
+  display: flex;
+  flex-direction: column; 
 }
 
 .cardBoard {
   display: flex;
+  /* flex-direction: column; */
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
   margin-left: 3rem;
   margin-right: 3rem;
- 
   overflow-y: hidden;
   animation-duration: 5s;
-
 }
-
-.sorters {
-  margin-block: unset;
-  margin-top: 2rem;
-}  
 
 .customSelect {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding-block: 3rem;
-  gap: .5rem;
+  gap: 0.5rem;
   font-weight: 400;
-  
-  text-align: start;
   font-size: 24px;
-}
-.customSelect i {
-  padding-right: 100px;
-  color: var(--softGreen);
-
 }
 .customSelect option,
 .customSelect select {
- 
-  /* padding-inline: 2rem; */
+  
   border: none !important;
-  outline: none!important;
+  outline: none !important;
   background: none;
   width: 8rem;
-
+  text-align: center;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 3px;
 }
+@media screen and (max-width: 991px) {
+  .customSelect option,
+  .customSelect select {
+    margin: 0 auto; /* Establece el margen a auto */
+  }
+}
 .customSelect option {
   background: black;
   margin-bottom: 10px;
-
 }
 
-
-
-@media screen and (min-width: 992px) {.customSelect {
-
-  flex-direction: row;
-
-}}  
-
-
-
+@media screen and (min-width: 992px) {
+  .customSelect {
+    flex-direction: row;
+  }
+}

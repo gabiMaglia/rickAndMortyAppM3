@@ -1,4 +1,5 @@
 import axios from "axios";
+const url = import.meta.env.VITE_API_ADDRES;
 
 export const fetchCharacterById = async (id) => {
   /**
@@ -8,7 +9,7 @@ export const fetchCharacterById = async (id) => {
    */
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_ADDRES}/character/${id}`
+      `${url}/character/${id}`
     );
     const data = response.json();
     return data;
@@ -20,7 +21,7 @@ export const fetchCharacterById = async (id) => {
 export const fetchMaxCharacters = async () => {
   try {
     const response = await axios.get(
-      `${import.meta.env.VITE_API_ADDRES}/maxChar`
+      `${url}/maxChar`
     );
     return response.data;
   } catch (error) {
@@ -36,7 +37,7 @@ export const fetchAllData = async () => {
    */
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_ADDRES}/character`
+      `${url}/character`
     );
     const data = response.json();
     return data;
@@ -49,7 +50,7 @@ export const loginService = async (email, password) => {
   try {
     const response = await axios.post(
       `${
-        import.meta.env.VITE_API_ADDRES
+        url
       }/login?email=${email}&password=${password}`
     );
 
@@ -63,17 +64,15 @@ export const singInService = async (
   first_name,
   last_name,
   user_email,
-  user_handle,
   user_password
 ) => {
   try {
     const response = await axios.post(
-      `${import.meta.env.VITE_API_ADDRES}/newuser`,
+      `${url}/newuser`,
       {
         first_name,
         last_name,
         user_email,
-        user_handle,
         user_password,
       }
     );
@@ -83,10 +82,24 @@ export const singInService = async (
   }
 };
 
+export const getFavServices = async () => {
+  try {
+    const response = await axios.get(
+      `${url}/fav`,
+    );
+    return response.data;
+    
+  } catch (error) {
+    throw Error(error);
+    
+  }
+}
+
 export const postFavService = async (character) => {
   try {
+    console.log(character)
     const response = await axios.post(
-      `${import.meta.env.VITE_API_ADDRES}/fav`,
+      `${url}/fav`,
       character
     );
     return response.data;
@@ -99,7 +112,7 @@ export const postFavService = async (character) => {
 export const removeFavService = async (id) => {
   try {
     const response = await axios.delete(
-      `${import.meta.env.VITE_API_ADDRES}/fav/${id}`
+      `${url}/fav/${id}`
     );
     return response.data;
   } catch (error) {
@@ -110,7 +123,7 @@ export const removeFavService = async (id) => {
 export const clearFavService = async () => {
   try {
     const response = await axios.delete(
-      `${import.meta.env.VITE_API_ADDRES}/fav`
+      `${url}/fav`
     );
     return response.data;
   } catch (error) {

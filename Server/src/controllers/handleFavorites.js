@@ -1,20 +1,32 @@
 const { favorites } = require("../db");
 
+const getFavsController = async (req, res) => {
+try {
+  const allFavs = await favorites.findAll();
+  return res.status(200).json(allFavs)
+} catch (error) {
+  return res.status(500).send(error.message);
+}
+}
+
 const postFavController = async (req, res) => {
   try {
     const { id, name, gender, species, origin, image, status } = req.body;
-    console.log(origin);
+  
     if (!req.body) {
       return res.status(401).send("Faltan datos");
     } else {
-      await favorites.create({
+      
+      await favorites.findOrCreate({
+        where:{ id: id },
+        defaults :{
         id,
         name,
         gender,
         species,
         origin,
         image,
-        status,
+        status,}
       });
       const updatedList = await favorites.findAll();
       return res.status(200).json(updatedList);
@@ -52,6 +64,7 @@ const clearFavController = async (req, res) => {
 };
 
 module.exports = {
+  getFavsController,
   postFavController,
   deleteFavController,
   clearFavController,

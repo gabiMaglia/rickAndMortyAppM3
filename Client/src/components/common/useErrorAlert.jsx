@@ -4,11 +4,13 @@ import withReactContent from "sweetalert2-react-content";
 const useErrorAlert = (message, statusCode) => {
   const MySwal = withReactContent(Swal);
   let timerInterval;
+ 
+
 
  const paseMessage = message 
 
   MySwal.fire({
-    title: statusCode,
+    title: statusCode === 200? 'Exito' : 'Error',
     html:  paseMessage,
     timer: 2000,
     timerProgressBar: true,
