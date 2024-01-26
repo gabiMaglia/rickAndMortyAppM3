@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const Container = styled.div`
-   height: 100svh;
+  height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
