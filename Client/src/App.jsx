@@ -27,18 +27,20 @@ import { fetchCharacterById } from "./services/apiCall.js";
 import ProtectedRoutes from "./helpers/ProtectedRoutes.jsx";
 import { useDispatch } from "react-redux";
 import { getFavFromDb } from "./redux/actions.js";
+import LoadingSpinner from "./components/common/loading.jsx";
 //////////////////////////////////////////////////////////////
 
 function App() {
   // Card collection state
   const [character, setCharacter] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [maxCharacters, setMaxCharacters] = useState(0);
   const navigate = useNavigate();
   // Log in data
   const [access, setAccess] = useLocalStorage("acces", false);
   // const maxCharacters = 826;
   const [loginOrRegister, setloginOrRegister] = useState("login");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
     if (maxCharacters === 0) {
       fetchMaxCharacters().then((data) => {
@@ -48,41 +50,40 @@ function App() {
   }, [maxCharacters]);
 
   const formHandler = (e) => {
-    const button = e.target.innerHTML;
+  const button = e.target.innerHTML;
     if (button === "Log in") setloginOrRegister("login");
     if (button === "Sing in") setloginOrRegister("register");
   };
   const login = async (userData) => {
     const { username, password } = userData;
-
+    setLoading(true);
     loginService(username, password).then((data) => {
-      if (data.status > 399) useErrorAlert(JSON.parse(data.response).message, data.status);
+      if (data.status > 399)
+        useErrorAlert(JSON.parse(data.response).message, data.status);
       if (data.access) {
         setAccess(true);
+        dispatch(getFavFromDb());
         navigate("/home");
-        dispatch(getFavFromDb())
       }
+      setLoading(false);
     });
   };
 
   const register = (userData) => {
-    const { first_name, last_name, user_email, user_password } =
-      userData;
-
-    singInService(
-      first_name,
-      last_name,
-      user_email,
-      user_password
-    ).then((data) => {
-      if (data.status > 399) useErrorAlert(data.response, data.status);
-      else {
-        useErrorAlert("User created", 200);
-        setTimeout(() => {
-          window.location.reload();
-        }, 600);
+    const { first_name, last_name, user_email, user_password } = userData;
+    setLoading(true)
+    singInService(first_name, last_name, user_email, user_password).then(
+      (data) => {
+        if (data.status > 399) useErrorAlert(data.response, data.status);
+        else {
+          useErrorAlert("User created", 200);
+          setTimeout(() => {
+            window.location.reload();
+          }, 600);
+        }
+        setLoading(false)
       }
-    });
+    );
   };
   const logout = () => {
     /**
@@ -97,7 +98,7 @@ function App() {
      * @param {number} id - The id of the chracter.
      * Adds a new element  to the state.
      */
-   
+
     try {
       fetchCharacterById(id).then((data) => {
         const isDuplicate = character.some((char) => char.id === data.id);
@@ -128,16 +129,20 @@ function App() {
     // console.log('object')
   };
 
-  return (
+  return loading ? (
+    <>
+      <LoadingSpinner />
+    </>
+  ) : (
     <>
       <StarsBackground />
 
       <div className="App">
-          <NavBar
-            logoutFunction={logout}
-            formHandler={formHandler}
-            loginOrRegister={loginOrRegister}
-          />
+        <NavBar
+          logoutFunction={logout}
+          formHandler={formHandler}
+          loginOrRegister={loginOrRegister}
+        />
         <main className="mainLayout">
           <Routes>
             <Route
@@ -162,13 +167,12 @@ function App() {
 
             <Route path="/*" element={<Error404 />} />
           </Routes>
-
         </main>
-          <Footer
-            maxChar={maxCharacters}
-            addCharacter={addCard}
-            clear={clearBoard}
-          />
+        <Footer
+          maxChar={maxCharacters}
+          addCharacter={addCard}
+          clear={clearBoard}
+        />
       </div>
     </>
   );
