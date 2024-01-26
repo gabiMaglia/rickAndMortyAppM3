@@ -27,7 +27,7 @@ import { fetchCharacterById } from "./services/apiCall.js";
 import ProtectedRoutes from "./helpers/ProtectedRoutes.jsx";
 import { useDispatch } from "react-redux";
 import { getFavFromDb } from "./redux/actions.js";
-import LoadingSpinner from "./components/common/loading.jsx";
+import LoadingSpinner from "./components/common/Loading.jsx";
 //////////////////////////////////////////////////////////////
 
 function App() {
