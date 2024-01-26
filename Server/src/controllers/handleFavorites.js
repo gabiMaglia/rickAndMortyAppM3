@@ -39,11 +39,8 @@ const postFavController = async (req, res) => {
 const deleteFavController = async (req, res) => {
   try {
     const { id } = req.params;
-
     const deleteCharacter = await favorites.findByPk(id);
-
-    if (deleteCharacter) deleteCharacter.destroy();
-
+    if (deleteCharacter) await deleteCharacter.destroy();
     const updatedList = await favorites.findAll();
     return res.status(200).json(updatedList);
   } catch (error) {
