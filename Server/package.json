@@ -4,7 +4,8 @@
   "description": "Rick and morty server and M3 integration proyect",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js",
+    "start": "node ./index.js",
+    "dev": "nodemon -L",
     "test": "jest --detectOpenHandles"
   },
   "author": "Gabriel Maglia",

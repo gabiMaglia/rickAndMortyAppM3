@@ -3,13 +3,17 @@ const { Sequelize } = require("sequelize");
 const favoritesModel = require("./models/Favorites");
 const userModel = require("./models/User");
 const episodeModel = require("./models/Episode");
-const { DB_USER, DB_PASSWORD, DB_PORT, DB_HOST, BDD } = process.env;
-
+const isProduction = process.env.NODE_ENV === 'production' 
+const koyebDb = process.env.KOYEB_DB_DIR
+const localDb = process.env.LOCAL_DB_DIR
 // DB Conection
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${Number(DB_PORT)}/${BDD}`,
-  { logging: false }
-);
+const sequelize = new Sequelize(isProduction ? koyebDb : localDb, {
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: isProduction ? { require: true, rejectUnauthorized: false } : false,
+  },
+  logging: false,
+});
 
 // Model implementation
 favoritesModel(sequelize);
