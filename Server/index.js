@@ -3,7 +3,7 @@ const {sequelize} = require("./src/db");
 const PORT = 3001;
 
 try {
-  sequelize.sync({ force: true }).then(() => {
+  sequelize.sync({ alter: false }).then(() => {
     server.listen(PORT, () => {
       console.log("Server raised at port " + PORT);
     });
