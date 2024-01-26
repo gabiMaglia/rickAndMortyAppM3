@@ -5,7 +5,7 @@ import InfoBox from "../Card/CardParts/InfoBox";
 import { fetchCharacterById } from "../../services/apiCall";
 import deadLogo from "../../assets/png/dead.png";
 import liveLogo from "../../assets/png/live1.png";
-import LoadingSpinner from "../common/loading";
+import LoadingSpinner from "../common/Loading";
 /**
  * This function represents the Detail Page for
  * cards and about
