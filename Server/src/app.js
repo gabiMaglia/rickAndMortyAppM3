@@ -12,6 +12,6 @@ server.use(express.json());
 server.use(morgan('tiny'))
 // ENDMIDDLEWARES
 
-server.use('/rickandmorty', router) 
+server.use('/', router) 
 
 module.exports = server
