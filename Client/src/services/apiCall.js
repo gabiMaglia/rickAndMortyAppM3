@@ -1,6 +1,7 @@
 import axios from "axios";
 const url = import.meta.env.VITE_API_ADDRES;
 
+
 export const fetchCharacterById = async (id) => {
   /**
    * This function fetch a chracter by id
